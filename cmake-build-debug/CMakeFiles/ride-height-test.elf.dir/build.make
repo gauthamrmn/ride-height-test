@@ -69,19 +69,19 @@ include CMakeFiles/ride-height-test.elf.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/ride-height-test.elf.dir/flags.make
 
-CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
-CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp
-CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.obj"
-	/usr/local/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.obj -MF CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.obj.d -o CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp
+CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
+CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Include/platform/argus_irq.c
+CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.obj"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Include/platform/argus_irq.c
 
-CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.i"
-	/usr/local/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp > CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.i
+CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.i"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Include/platform/argus_irq.c > CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.i
 
-CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.s"
-	/usr/local/bin/arm-none-eabi-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp -o CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.s
+CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.s"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Include/platform/argus_irq.c -o CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.s
 
 CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_nvm.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_nvm.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Include/platform/argus_nvm.c
@@ -139,10 +139,24 @@ CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_tim
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_timer.c.s"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Include/platform/argus_timer.c -o CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_timer.c.s
 
+CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
+CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Include/platform/flash.c
+CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.obj"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Include/platform/flash.c
+
+CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.i"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Include/platform/flash.c > CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.i
+
+CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.s"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Include/platform/flash.c -o CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.s
+
 CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Test/argus_hal_test.c
 CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Test/argus_hal_test.c
 
 CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.i: cmake_force
@@ -153,10 +167,24 @@ CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.s: c
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.s"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Inc/AFBR-S50/Test/argus_hal_test.c -o CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.s
 
+CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
+CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/dma.c
+CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.obj"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/dma.c
+
+CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.i"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/dma.c > CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.i
+
+CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.s"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/dma.c -o CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.s
+
 CMakeFiles/ride-height-test.elf.dir/Core/Src/gpio.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Core/Src/gpio.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/gpio.c
 CMakeFiles/ride-height-test.elf.dir/Core/Src/gpio.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/gpio.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/gpio.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Core/Src/gpio.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Core/Src/gpio.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Core/Src/gpio.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/gpio.c
 
 CMakeFiles/ride-height-test.elf.dir/Core/Src/gpio.c.i: cmake_force
@@ -170,7 +198,7 @@ CMakeFiles/ride-height-test.elf.dir/Core/Src/gpio.c.s: cmake_force
 CMakeFiles/ride-height-test.elf.dir/Core/Src/main.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Core/Src/main.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/main.c
 CMakeFiles/ride-height-test.elf.dir/Core/Src/main.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/main.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/main.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Core/Src/main.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Core/Src/main.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Core/Src/main.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/main.c
 
 CMakeFiles/ride-height-test.elf.dir/Core/Src/main.c.i: cmake_force
@@ -184,7 +212,7 @@ CMakeFiles/ride-height-test.elf.dir/Core/Src/main.c.s: cmake_force
 CMakeFiles/ride-height-test.elf.dir/Core/Src/spi.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Core/Src/spi.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/spi.c
 CMakeFiles/ride-height-test.elf.dir/Core/Src/spi.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/spi.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/spi.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Core/Src/spi.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Core/Src/spi.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Core/Src/spi.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/spi.c
 
 CMakeFiles/ride-height-test.elf.dir/Core/Src/spi.c.i: cmake_force
@@ -198,7 +226,7 @@ CMakeFiles/ride-height-test.elf.dir/Core/Src/spi.c.s: cmake_force
 CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_hal_msp.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_hal_msp.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/stm32l4xx_hal_msp.c
 CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_hal_msp.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_hal_msp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_hal_msp.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_hal_msp.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_hal_msp.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_hal_msp.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/stm32l4xx_hal_msp.c
 
 CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_hal_msp.c.i: cmake_force
@@ -212,7 +240,7 @@ CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_hal_msp.c.s: cmake_force
 CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_it.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_it.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/stm32l4xx_it.c
 CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_it.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_it.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_it.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_it.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_it.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_it.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/stm32l4xx_it.c
 
 CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_it.c.i: cmake_force
@@ -226,7 +254,7 @@ CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_it.c.s: cmake_force
 CMakeFiles/ride-height-test.elf.dir/Core/Src/syscalls.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Core/Src/syscalls.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/syscalls.c
 CMakeFiles/ride-height-test.elf.dir/Core/Src/syscalls.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/syscalls.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/syscalls.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Core/Src/syscalls.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Core/Src/syscalls.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Core/Src/syscalls.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/syscalls.c
 
 CMakeFiles/ride-height-test.elf.dir/Core/Src/syscalls.c.i: cmake_force
@@ -240,7 +268,7 @@ CMakeFiles/ride-height-test.elf.dir/Core/Src/syscalls.c.s: cmake_force
 CMakeFiles/ride-height-test.elf.dir/Core/Src/sysmem.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Core/Src/sysmem.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/sysmem.c
 CMakeFiles/ride-height-test.elf.dir/Core/Src/sysmem.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/sysmem.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/sysmem.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Core/Src/sysmem.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Core/Src/sysmem.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Core/Src/sysmem.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/sysmem.c
 
 CMakeFiles/ride-height-test.elf.dir/Core/Src/sysmem.c.i: cmake_force
@@ -254,7 +282,7 @@ CMakeFiles/ride-height-test.elf.dir/Core/Src/sysmem.c.s: cmake_force
 CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/system_stm32l4xx.c
 CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/system_stm32l4xx.c
 
 CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.i: cmake_force
@@ -265,9 +293,23 @@ CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.s"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/system_stm32l4xx.c -o CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.s
 
+CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
+CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/tim.c
+CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.obj"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/tim.c
+
+CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.i"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/tim.c > CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.i
+
+CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.s"
+	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Src/tim.c -o CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.s
+
 CMakeFiles/ride-height-test.elf.dir/Core/Startup/startup_stm32l496rgtx.s.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Core/Startup/startup_stm32l496rgtx.s.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Startup/startup_stm32l496rgtx.s
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building ASM object CMakeFiles/ride-height-test.elf.dir/Core/Startup/startup_stm32l496rgtx.s.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building ASM object CMakeFiles/ride-height-test.elf.dir/Core/Startup/startup_stm32l496rgtx.s.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/ride-height-test.elf.dir/Core/Startup/startup_stm32l496rgtx.s.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Core/Startup/startup_stm32l496rgtx.s
 
 CMakeFiles/ride-height-test.elf.dir/Core/Startup/startup_stm32l496rgtx.s.i: cmake_force
@@ -281,7 +323,7 @@ CMakeFiles/ride-height-test.elf.dir/Core/Startup/startup_stm32l496rgtx.s.s: cmak
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c.i: cmake_force
@@ -295,7 +337,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c.i: cmake_force
@@ -309,7 +351,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c.i: cmake_force
@@ -323,7 +365,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c.i: cmake_force
@@ -337,7 +379,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c.i: cmake_force
@@ -351,7 +393,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c.i: cmake_force
@@ -365,7 +407,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c.i: cmake_force
@@ -379,7 +421,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c.i: cmake_force
@@ -393,7 +435,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c.i: cmake_force
@@ -407,7 +449,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c.i: cmake_force
@@ -421,7 +463,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c.i: cmake_force
@@ -435,7 +477,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c.i: cmake_force
@@ -449,7 +491,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c.i: cmake_force
@@ -463,7 +505,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c.i: cmake_force
@@ -477,7 +519,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c.i: cmake_force
@@ -491,7 +533,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi.c.i: cmake_force
@@ -505,7 +547,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi_ex.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi_ex.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi_ex.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi_ex.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi_ex.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi_ex.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi_ex.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi_ex.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi_ex.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi_ex.c.i: cmake_force
@@ -519,7 +561,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c.i: cmake_force
@@ -533,7 +575,7 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c.obj: CMakeFiles/ride-height-test.elf.dir/flags.make
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c.obj: /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c.obj: CMakeFiles/ride-height-test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c.obj"
 	/usr/local/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c.obj -MF CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c.obj.d -o CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c.obj -c /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c
 
 CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c.i: cmake_force
@@ -546,12 +588,14 @@ CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_h
 
 # Object files for target ride-height-test.elf
 ride__height__test_elf_OBJECTS = \
-"CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.obj" \
+"CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.obj" \
 "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_nvm.c.obj" \
 "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_print.c.obj" \
 "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_s2pi.c.obj" \
 "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_timer.c.obj" \
+"CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.obj" \
 "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.obj" \
+"CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.obj" \
 "CMakeFiles/ride-height-test.elf.dir/Core/Src/gpio.c.obj" \
 "CMakeFiles/ride-height-test.elf.dir/Core/Src/main.c.obj" \
 "CMakeFiles/ride-height-test.elf.dir/Core/Src/spi.c.obj" \
@@ -560,6 +604,7 @@ ride__height__test_elf_OBJECTS = \
 "CMakeFiles/ride-height-test.elf.dir/Core/Src/syscalls.c.obj" \
 "CMakeFiles/ride-height-test.elf.dir/Core/Src/sysmem.c.obj" \
 "CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.obj" \
+"CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.obj" \
 "CMakeFiles/ride-height-test.elf.dir/Core/Startup/startup_stm32l496rgtx.s.obj" \
 "CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c.obj" \
 "CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c.obj" \
@@ -584,12 +629,14 @@ ride__height__test_elf_OBJECTS = \
 # External object files for target ride-height-test.elf
 ride__height__test_elf_EXTERNAL_OBJECTS =
 
-ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.obj
+ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.obj
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_nvm.c.obj
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_print.c.obj
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_s2pi.c.obj
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_timer.c.obj
+ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.obj
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.obj
+ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.obj
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Src/gpio.c.obj
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Src/main.c.obj
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Src/spi.c.obj
@@ -598,6 +645,7 @@ ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Src/stm32l4xx_it.
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Src/syscalls.c.obj
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Src/sysmem.c.obj
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.obj
+ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.obj
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Core/Startup/startup_stm32l496rgtx.s.obj
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c.obj
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c.obj
@@ -620,7 +668,7 @@ ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c.obj
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/build.make
 ride-height-test.elf: CMakeFiles/ride-height-test.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Linking CXX executable ride-height-test.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Linking C executable ride-height-test.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ride-height-test.elf.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Building /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/ride-height-test.hex"
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Building /Users/exinr/skynet/LHRe_25_Local_Copies/ride-height-test/cmake-build-debug/ride-height-test.bin"

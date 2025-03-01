@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.obj"
-  "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.obj.d"
+  "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.obj"
+  "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.obj.d"
   "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_nvm.c.obj"
   "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_nvm.c.obj.d"
   "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_print.c.obj"
@@ -9,8 +9,12 @@ file(REMOVE_RECURSE
   "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_s2pi.c.obj.d"
   "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_timer.c.obj"
   "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_timer.c.obj.d"
+  "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.obj"
+  "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.obj.d"
   "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.obj"
   "CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.obj.d"
+  "CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.obj"
+  "CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.obj.d"
   "CMakeFiles/ride-height-test.elf.dir/Core/Src/gpio.c.obj"
   "CMakeFiles/ride-height-test.elf.dir/Core/Src/gpio.c.obj.d"
   "CMakeFiles/ride-height-test.elf.dir/Core/Src/main.c.obj"
@@ -27,6 +31,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ride-height-test.elf.dir/Core/Src/sysmem.c.obj.d"
   "CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.obj"
   "CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.obj.d"
+  "CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.obj"
+  "CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.obj.d"
   "CMakeFiles/ride-height-test.elf.dir/Core/Startup/startup_stm32l496rgtx.s.obj"
   "CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c.obj"
   "CMakeFiles/ride-height-test.elf.dir/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c.obj.d"
@@ -71,6 +77,6 @@ file(REMOVE_RECURSE
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang ASM C CXX)
+foreach(lang ASM C)
   include(CMakeFiles/ride-height-test.elf.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

@@ -129,29 +129,29 @@ ride-height-test.elf/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/build
 .PHONY : ride-height-test.elf/fast
 
-Core/Inc/AFBR-S50/Include/platform/argus_irq.obj: Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.obj
+Core/Inc/AFBR-S50/Include/platform/argus_irq.obj: Core/Inc/AFBR-S50/Include/platform/argus_irq.c.obj
 .PHONY : Core/Inc/AFBR-S50/Include/platform/argus_irq.obj
 
 # target to build an object file
-Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.obj
-.PHONY : Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.obj
+Core/Inc/AFBR-S50/Include/platform/argus_irq.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.obj
+.PHONY : Core/Inc/AFBR-S50/Include/platform/argus_irq.c.obj
 
-Core/Inc/AFBR-S50/Include/platform/argus_irq.i: Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.i
+Core/Inc/AFBR-S50/Include/platform/argus_irq.i: Core/Inc/AFBR-S50/Include/platform/argus_irq.c.i
 .PHONY : Core/Inc/AFBR-S50/Include/platform/argus_irq.i
 
 # target to preprocess a source file
-Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.i
-.PHONY : Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.i
+Core/Inc/AFBR-S50/Include/platform/argus_irq.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.i
+.PHONY : Core/Inc/AFBR-S50/Include/platform/argus_irq.c.i
 
-Core/Inc/AFBR-S50/Include/platform/argus_irq.s: Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.s
+Core/Inc/AFBR-S50/Include/platform/argus_irq.s: Core/Inc/AFBR-S50/Include/platform/argus_irq.c.s
 .PHONY : Core/Inc/AFBR-S50/Include/platform/argus_irq.s
 
 # target to generate assembly for a file
-Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.s
-.PHONY : Core/Inc/AFBR-S50/Include/platform/argus_irq.cpp.s
+Core/Inc/AFBR-S50/Include/platform/argus_irq.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_irq.c.s
+.PHONY : Core/Inc/AFBR-S50/Include/platform/argus_irq.c.s
 
 Core/Inc/AFBR-S50/Include/platform/argus_nvm.obj: Core/Inc/AFBR-S50/Include/platform/argus_nvm.c.obj
 .PHONY : Core/Inc/AFBR-S50/Include/platform/argus_nvm.obj
@@ -249,6 +249,30 @@ Core/Inc/AFBR-S50/Include/platform/argus_timer.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/argus_timer.c.s
 .PHONY : Core/Inc/AFBR-S50/Include/platform/argus_timer.c.s
 
+Core/Inc/AFBR-S50/Include/platform/flash.obj: Core/Inc/AFBR-S50/Include/platform/flash.c.obj
+.PHONY : Core/Inc/AFBR-S50/Include/platform/flash.obj
+
+# target to build an object file
+Core/Inc/AFBR-S50/Include/platform/flash.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.obj
+.PHONY : Core/Inc/AFBR-S50/Include/platform/flash.c.obj
+
+Core/Inc/AFBR-S50/Include/platform/flash.i: Core/Inc/AFBR-S50/Include/platform/flash.c.i
+.PHONY : Core/Inc/AFBR-S50/Include/platform/flash.i
+
+# target to preprocess a source file
+Core/Inc/AFBR-S50/Include/platform/flash.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.i
+.PHONY : Core/Inc/AFBR-S50/Include/platform/flash.c.i
+
+Core/Inc/AFBR-S50/Include/platform/flash.s: Core/Inc/AFBR-S50/Include/platform/flash.c.s
+.PHONY : Core/Inc/AFBR-S50/Include/platform/flash.s
+
+# target to generate assembly for a file
+Core/Inc/AFBR-S50/Include/platform/flash.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Include/platform/flash.c.s
+.PHONY : Core/Inc/AFBR-S50/Include/platform/flash.c.s
+
 Core/Inc/AFBR-S50/Test/argus_hal_test.obj: Core/Inc/AFBR-S50/Test/argus_hal_test.c.obj
 .PHONY : Core/Inc/AFBR-S50/Test/argus_hal_test.obj
 
@@ -272,6 +296,30 @@ Core/Inc/AFBR-S50/Test/argus_hal_test.s: Core/Inc/AFBR-S50/Test/argus_hal_test.c
 Core/Inc/AFBR-S50/Test/argus_hal_test.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Inc/AFBR-S50/Test/argus_hal_test.c.s
 .PHONY : Core/Inc/AFBR-S50/Test/argus_hal_test.c.s
+
+Core/Src/dma.obj: Core/Src/dma.c.obj
+.PHONY : Core/Src/dma.obj
+
+# target to build an object file
+Core/Src/dma.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.obj
+.PHONY : Core/Src/dma.c.obj
+
+Core/Src/dma.i: Core/Src/dma.c.i
+.PHONY : Core/Src/dma.i
+
+# target to preprocess a source file
+Core/Src/dma.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.i
+.PHONY : Core/Src/dma.c.i
+
+Core/Src/dma.s: Core/Src/dma.c.s
+.PHONY : Core/Src/dma.s
+
+# target to generate assembly for a file
+Core/Src/dma.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Src/dma.c.s
+.PHONY : Core/Src/dma.c.s
 
 Core/Src/gpio.obj: Core/Src/gpio.c.obj
 .PHONY : Core/Src/gpio.obj
@@ -464,6 +512,30 @@ Core/Src/system_stm32l4xx.s: Core/Src/system_stm32l4xx.c.s
 Core/Src/system_stm32l4xx.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Src/system_stm32l4xx.c.s
 .PHONY : Core/Src/system_stm32l4xx.c.s
+
+Core/Src/tim.obj: Core/Src/tim.c.obj
+.PHONY : Core/Src/tim.obj
+
+# target to build an object file
+Core/Src/tim.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.obj
+.PHONY : Core/Src/tim.c.obj
+
+Core/Src/tim.i: Core/Src/tim.c.i
+.PHONY : Core/Src/tim.i
+
+# target to preprocess a source file
+Core/Src/tim.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.i
+.PHONY : Core/Src/tim.c.i
+
+Core/Src/tim.s: Core/Src/tim.c.s
+.PHONY : Core/Src/tim.s
+
+# target to generate assembly for a file
+Core/Src/tim.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ride-height-test.elf.dir/build.make CMakeFiles/ride-height-test.elf.dir/Core/Src/tim.c.s
+.PHONY : Core/Src/tim.c.s
 
 Core/Startup/startup_stm32l496rgtx.obj: Core/Startup/startup_stm32l496rgtx.s.obj
 .PHONY : Core/Startup/startup_stm32l496rgtx.obj
@@ -953,9 +1025,15 @@ help:
 	@echo "... Core/Inc/AFBR-S50/Include/platform/argus_timer.obj"
 	@echo "... Core/Inc/AFBR-S50/Include/platform/argus_timer.i"
 	@echo "... Core/Inc/AFBR-S50/Include/platform/argus_timer.s"
+	@echo "... Core/Inc/AFBR-S50/Include/platform/flash.obj"
+	@echo "... Core/Inc/AFBR-S50/Include/platform/flash.i"
+	@echo "... Core/Inc/AFBR-S50/Include/platform/flash.s"
 	@echo "... Core/Inc/AFBR-S50/Test/argus_hal_test.obj"
 	@echo "... Core/Inc/AFBR-S50/Test/argus_hal_test.i"
 	@echo "... Core/Inc/AFBR-S50/Test/argus_hal_test.s"
+	@echo "... Core/Src/dma.obj"
+	@echo "... Core/Src/dma.i"
+	@echo "... Core/Src/dma.s"
 	@echo "... Core/Src/gpio.obj"
 	@echo "... Core/Src/gpio.i"
 	@echo "... Core/Src/gpio.s"
@@ -980,6 +1058,9 @@ help:
 	@echo "... Core/Src/system_stm32l4xx.obj"
 	@echo "... Core/Src/system_stm32l4xx.i"
 	@echo "... Core/Src/system_stm32l4xx.s"
+	@echo "... Core/Src/tim.obj"
+	@echo "... Core/Src/tim.i"
+	@echo "... Core/Src/tim.s"
 	@echo "... Core/Startup/startup_stm32l496rgtx.obj"
 	@echo "... Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.obj"
 	@echo "... Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.i"
