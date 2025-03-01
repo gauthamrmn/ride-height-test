@@ -36,6 +36,7 @@
 
 #include "main.h"
 #include "flash.h"
+#include "stm32l4xx_hal_flash.h"
 
 
 
@@ -72,8 +73,10 @@
  * Definitions
  ******************************************************************************/
 
+
+#define FLASH_PAGE_1 1U
+#define FLASH_PAGE_2 2U
 /*! The size of a single flash sector. */
-#define FLASH_SECTOR_SIZE 0x4000U
 
 /*! Address offset for header bytes. */
 #define FLASH_ADDRESS_OFFSET 16U
@@ -85,35 +88,35 @@
 #define FLASH_LOCK() do { if (HAL_FLASH_Lock() != HAL_OK) return ERROR_FAIL; } while(0)
 
 /*! Erase the flash memory \p sector before writing. */
-#define FLASH_ERASE_SECTOR(sector) do { \
+#define FLASH_ERASE_PAGE(sector) do { \
         __HAL_FLASH_CLEAR_FLAG(FLASH_FLAG_EOP | FLASH_FLAG_OPERR | FLASH_FLAG_WRPERR | FLASH_FLAG_PGAERR | FLASH_FLAG_PGSERR ); \
         FLASH_Erase_Sector(sector, VOLTAGE_RANGE_3); \
     } while(0)
 
 /*! Address of flash sector 1. */
-#define FLASH_SECTOR_1_ADDR ((uint32_t)(userConfig))
+#define FLASH_PAGE_1_ADDR ((uint32_t)(userConfig))
 
 /*! Address of flash sector 2. */
-#define FLASH_SECTOR_2_ADDR ((uint32_t)(userConfig) + FLASH_SECTOR_SIZE)
+#define FLASH_PAGE_2_ADDR ((uint32_t)(userConfig) + FLASH_PAGE_SIZE)
 
 /*! Obtains the current sector. */
-#define FLASH_CURRENT_SECTOR() ((userConfig[0] == 0x00U) ? FLASH_SECTOR_1 : FLASH_SECTOR_2)
+#define FLASH_CURRENT_PAGE() ((userConfig[0] == 0x00U) ? FLASH_PAGE_1 : FLASH_PAGE_2)
 
 /*! Obtains the not current sector. */
-#define FLASH_NOT_CURRENT_SECTOR() ((userConfig[0] == 0x00U) ? FLASH_SECTOR_2 : FLASH_SECTOR_1)
+#define FLASH_NOT_CURRENT_PAGE() ((userConfig[0] == 0x00U) ? FLASH_PAGE_2 : FLASH_PAGE_1)
 
 /*! Macro to determine the address vector of a specified flash sector by its index. */
-#define FLASH_SECTOR_ADDRESS(startaddr, index, offset) \
+#define FLASH_PAGE_ADDRESS(startaddr, index, offset) \
     ((uint32_t)(((startaddr) + FLASH_ADDRESS_OFFSET) + ((index) * (FLASH_BLOCK_SIZE)) + (offset)))
 
 /*! Obtains the current sector address. */
-#define FLASH_CURRENT_SECTOR_ADDR() ((userConfig[0] == 0x00U) ? FLASH_SECTOR_1_ADDR : FLASH_SECTOR_2_ADDR)
+#define FLASH_CURRENT_PAGE_ADDR() ((userConfig[0] == 0x00U) ? FLASH_PAGE_1_ADDR : FLASH_PAGE_2_ADDR)
 
 /*! Obtains the not current sector address. */
-#define FLASH_NOT_CURRENT_SECTOR_ADDR() ((userConfig[0] == 0x00U) ? FLASH_SECTOR_2_ADDR : FLASH_SECTOR_1_ADDR)
+#define FLASH_NOT_CURRENT_PAGE_ADDR() ((userConfig[0] == 0x00U) ? FLASH_PAGE_2_ADDR : FLASH_PAGE_1_ADDR)
 
 /*! Array that points to the reserved flash memory for user data. */
-__attribute__((__section__(".user_data"))) const volatile uint8_t userConfig[2*FLASH_SECTOR_SIZE]; // sector 1+2
+__attribute__((__section__(".user_data"))) const volatile uint8_t userConfig[2*FLASH_PAGE_SIZE]; // sector 1+2
 
 /*!*****************************************************************************
  * @brief   Initializes global flash properties structure members.
@@ -121,7 +124,7 @@ __attribute__((__section__(".user_data"))) const volatile uint8_t userConfig[2*F
  *****************************************************************************/
 status_t Flash_Init(void)
 {
-    static_assert(FLASH_SECTOR_SIZE > FLASH_TOTAL_SIZE + FLASH_ADDRESS_OFFSET,
+    static_assert(FLASH_PAGE_SIZE > FLASH_SIZE + FLASH_ADDRESS_OFFSET,
                   "Flash sector size exceeded!");
     static_assert(((FLASH_TOTAL_SIZE + FLASH_ADDRESS_OFFSET) & 0xF) == 0,
                   "Flash sector size must be multiple of 16 bytes!");
@@ -134,10 +137,10 @@ status_t Flash_Read(uint32_t index, uint32_t offset,
 {
     if (data == 0) return ERROR_INVALID_ARGUMENT;
     if (size == 0) return ERROR_INVALID_ARGUMENT;
-    if (FLASH_SECTOR_ADDRESS(0, index, offset) + size > FLASH_TOTAL_SIZE + FLASH_ADDRESS_OFFSET)
+    if (FLASH_PAGE_ADDRESS(0, index, offset) + size > FLASH_SIZE + FLASH_ADDRESS_OFFSET)
         return ERROR_OUT_OF_RANGE;
 
-    memcpy(data, (uint8_t*)FLASH_SECTOR_ADDRESS(FLASH_CURRENT_SECTOR_ADDR(), index, offset), size);
+    memcpy(data, (uint8_t*)FLASH_PAGE_ADDRESS(FLASH_CURRENT_PAGE_ADDR(), index, offset), size);
     return STATUS_OK;
 }
 
@@ -146,21 +149,21 @@ status_t Flash_Write(uint32_t index, uint32_t offset,
 {
     if (data == 0) return ERROR_INVALID_ARGUMENT;
     if (size == 0) return ERROR_INVALID_ARGUMENT;
-    if (FLASH_SECTOR_ADDRESS(0, index, offset) + size > FLASH_TOTAL_SIZE + FLASH_ADDRESS_OFFSET)
+    if (FLASH_PAGE_ADDRESS(0, index, offset) + size > FLASH_TOTAL_SIZE + FLASH_ADDRESS_OFFSET)
         return ERROR_OUT_OF_RANGE;
 
-    uint32_t const rd_sector = FLASH_CURRENT_SECTOR();
-    uint32_t const wr_sector = FLASH_NOT_CURRENT_SECTOR();
-    uint32_t const rd_sector_addr = FLASH_CURRENT_SECTOR_ADDR();
-    uint32_t const wr_sector_addr = FLASH_NOT_CURRENT_SECTOR_ADDR();
+    uint32_t const rd_sector = FLASH_CURRENT_PAGE();
+    uint32_t const wr_sector = FLASH_NOT_CURRENT_PAGE();
+    uint32_t const rd_sector_addr = FLASH_CURRENT_PAGE_ADDR();
+    uint32_t const wr_sector_addr = FLASH_NOT_CURRENT_PAGE_ADDR();
 
-    uint32_t const start = FLASH_SECTOR_ADDRESS(wr_sector_addr, index, offset);
+    uint32_t const start = FLASH_PAGE_ADDRESS(wr_sector_addr, index, offset);
     uint32_t const stop = start + size;
 
     /* rd: 0000... wr: ????.... */
 
     FLASH_UNLOCK();
-    FLASH_ERASE_SECTOR(wr_sector);
+    FLASH_ERASE_PAGE(wr_sector);
 
     /* rd: 0000... wr: FFFF.... */
 
@@ -204,7 +207,7 @@ status_t Flash_Write(uint32_t index, uint32_t offset,
 
     /* cur: 0000... oth: 00dd.... */
 
-    FLASH_ERASE_SECTOR(rd_sector);
+    FLASH_ERASE_PAGE(rd_sector);
 
     /* cur: ffff... oth: FFFF.... */
 
@@ -215,21 +218,21 @@ status_t Flash_Write(uint32_t index, uint32_t offset,
 status_t Flash_Clear(uint32_t index, uint32_t offset, uint32_t size)
 {
     if (size == 0) return ERROR_INVALID_ARGUMENT;
-    if (FLASH_SECTOR_ADDRESS(0, index, offset) + size > FLASH_TOTAL_SIZE + FLASH_ADDRESS_OFFSET)
+    if (FLASH_PAGE_ADDRESS(0, index, offset) + size > FLASH_TOTAL_SIZE + FLASH_ADDRESS_OFFSET)
         return ERROR_OUT_OF_RANGE;
 
-    uint32_t const rd_sector = FLASH_CURRENT_SECTOR();
-    uint32_t const wr_sector = FLASH_NOT_CURRENT_SECTOR();
-    uint32_t const rd_sector_addr = FLASH_CURRENT_SECTOR_ADDR();
-    uint32_t const wr_sector_addr = FLASH_NOT_CURRENT_SECTOR_ADDR();
+    uint32_t const rd_sector = FLASH_CURRENT_PAGE();
+    uint32_t const wr_sector = FLASH_NOT_CURRENT_PAGE();
+    uint32_t const rd_sector_addr = FLASH_CURRENT_PAGE_ADDR();
+    uint32_t const wr_sector_addr = FLASH_NOT_CURRENT_PAGE_ADDR();
 
-    uint32_t const start = FLASH_SECTOR_ADDRESS(wr_sector_addr, index, offset);
+    uint32_t const start = FLASH_PAGE_ADDRESS(wr_sector_addr, index, offset);
     uint32_t const stop = start + size;
 
     /* rd: 0000... wr: ????.... */
 
     FLASH_UNLOCK();
-    FLASH_ERASE_SECTOR(wr_sector);
+    FLASH_ERASE_PAGE(wr_sector);
 
     /* rd: 0000... wr: FFFF.... */
 
@@ -263,7 +266,7 @@ status_t Flash_Clear(uint32_t index, uint32_t offset, uint32_t size)
 
     /* cur: 0000... oth: 00dd.... */
 
-    FLASH_ERASE_SECTOR(rd_sector);
+    FLASH_ERASE_PAGE(rd_sector);
 
     /* cur: ffff... oth: FFFF.... */
 
