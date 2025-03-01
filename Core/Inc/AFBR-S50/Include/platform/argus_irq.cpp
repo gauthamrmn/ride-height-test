@@ -6,5 +6,7 @@
 
 void IRQ_UNLOCK(void) {}
 
-void IRQ_LOCK(void) {}
+void IRQ_LOCK(void) {
+    
+}
 
