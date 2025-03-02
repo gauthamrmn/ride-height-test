@@ -162,7 +162,25 @@ status_t S2PI_CaptureGpioControl(void) {
 	return STATUS_OK;
 }
 
-status_t S2PI_ReleaseGpioControl(s2pi_slave_t slave) {
+/*!*****************************************************************************
+ * @brief Releases the S2PI pins from GPIO usage and switches back to SPI mode.
+ * @details The GPIO pins are configured for SPI operation and the GPIO mode is
+ * left. Must be called if the pins are captured for GPIO operation via
+ * the #S2PI_CaptureGpioControl function.
+ * @return Returns the \link #status_t status\endlink (#STATUS_OK on success).
+ *****************************************************************************/
+status_t S2PI_ReleaseGpioControl(void) {
+	/* Check if something is ongoing. */
+	IRQ_LOCK();
+	status_t status = s2pi_.Status;
+	if (status != STATUS_S2PI_GPIO_MODE) {
+		IRQ_UNLOCK();
+		return status;
+	}
+	s2pi_.Status = STATUS_IDLE;
+	IRQ_UNLOCK();
+	S2PI_SetGPIOMode(GPIO_MODE_AF_PP);
+	return STATUS_OK;
 }
 
 status_t S2PI_WriteGpioPin(s2pi_slave_t slave, s2pi_pin_t pin, uint32_t value) {
