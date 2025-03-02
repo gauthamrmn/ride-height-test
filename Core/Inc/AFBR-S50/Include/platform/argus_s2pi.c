@@ -8,6 +8,8 @@
 #include "gpio.h"
 #include "spi.h"
 
+status_t S2PI_SetBaudRate(uint32_t baudRate_Bps);
+
 /*! A structure that holds the mapping to port and pin for all SPI modules. */
 typedef struct {
 	/*! The GPIO port */
@@ -49,8 +51,39 @@ s2pi_handle_t s2pi_ = {
 	}
 };
 
+status_t S2PI_Init(SPI_HandleTypeDef *defaultSlave, uint32_t baudRate_Bps) {
+	if (defaultSlave != &hspi2)
+		return ERROR_S2PI_INVALID_SLAVE;
+	return S2PI_SetBaudRate(baudRate_Bps);
+}
 
-status_t S2PI_GetStatus(s2pi_slave_t slave) {
+/*!***************************************************************************
+ * @brief Sets the SPI baud rate in bps.
+ * @param baudRate_Bps The default SPI baud rate in bauds-per-second.
+ * @return Returns the \link #status_t status\endlink (#STATUS_OK on success).
+ * - #STATUS_OK on success
+ * - #ERROR_S2PI_INVALID_BAUD_RATE on invalid baud rate value.
+ *****************************************************************************/
+status_t S2PI_SetBaudRate(uint32_t baudRate_Bps) {
+	uint32_t prescaler = 0;
+	/* Determine the maximum possible value not greater than baudRate_Bps */
+	for (; prescaler < 8; ++prescaler)
+		if (SystemCoreClock >> (prescaler + 1) <= baudRate_Bps)
+			break;
+	MODIFY_REG(hspi2.Instance->CR1, SPI_CR1_BR, prescaler << SPI_CR1_BR_Pos);
+	return STATUS_OK;
+}
+
+/*!***************************************************************************
+ * @brief Returns the status of the SPI module.
+ *
+ * @return Returns the \link #status_t status\endlink:
+ * - #STATUS_IDLE: No SPI transfer or GPIO access is ongoing.
+ * - #STATUS_BUSY: An SPI transfer is in progress.
+ * - #STATUS_S2PI_GPIO_MODE: The module is in GPIO mode.
+ *****************************************************************************/
+status_t S2PI_GetStatus(void) {
+	return s2pi_.Status;
 }
 
 status_t S2PI_TryGetMutex(s2pi_slave_t slave) {
