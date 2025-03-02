@@ -271,6 +271,17 @@ void HAL_SPI_AbortCpltCallback(SPI_HandleTypeDef *hspi) {
 	S2PI_CompleteTransfer(ERROR_ABORTED);
 }
 
+/**
+ * @brief SPI error callback.
+ * @param hspi pointer to a SPI_HandleTypeDef structure that contains
+ * the configuration information for SPI module.
+ * @retval None
+ */
+void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi) {
+	S2PI_CompleteTransfer(ERROR_FAIL);
+}
+
+
 status_t S2PI_SetIrqCallback(s2pi_slave_t slave,
                              s2pi_irq_callback_t callback,
                              void *callbackData) {
