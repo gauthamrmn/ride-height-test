@@ -3,6 +3,13 @@
 #include "assert.h"
 #include <stdint.h>
 
+/*! Callback function for PIT timer */
+static timer_cb_t timer_callback_;
+/*! Storage for the callback parameter */
+static void *callback_param_;
+/*! Timer interval in microseconds */
+static uint32_t period_us_;
+
 /*!***************************************************************************
  * @brief Initializes the timer hardware.
  * @return -
@@ -42,14 +49,34 @@ void Timer_GetCounterValue(uint32_t *hct, uint32_t *lct) {
 	} while (*lct > __HAL_TIM_GET_COUNTER(&htim2));
 }
 
+
+/*!***************************************************************************
+ * @brief Installs an periodic timer callback function.
+ * @details Installs an periodic timer callback function that is invoked whenever
+ * an interval elapses. The callback is the same for any interval,
+ * however, the single intervals can be identified by the passed
+ * parameter.
+ * Passing a zero-pointer removes and disables the callback.
+ * @param f The timer callback function.
+ * @return Returns the \link #status_t status\endlink (#STATUS_OK on success).
+ *****************************************************************************/
 status_t Timer_SetCallback(timer_cb_t f) {
+	timer_callback_ = f;
+	return STATUS_OK;
 }
 
+/**
+ * @brief Period elapsed callback in non-blocking mode
+ * @param htim TIM handle
+ * @retval None
+ */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+	/* Trigger callback if the interrupt belongs to TIM4 and there is a callback */
+	if (htim == &htim4 && timer_callback_) {
+		timer_callback_(callback_param_);
+	}
+}
 
-/*! Storage for the callback parameter */
-static void *callback_param_;
-/*! Timer interval in microseconds */
-static uint32_t period_us_;
 /*!***************************************************************************
  * @brief Starts the timer for a specified callback parameter.
  * @details Sets the callback interval for the specified parameter and starts
