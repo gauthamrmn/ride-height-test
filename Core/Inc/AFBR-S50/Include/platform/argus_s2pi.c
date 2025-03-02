@@ -7,6 +7,7 @@
 #include "dma.h"
 #include "gpio.h"
 #include "spi.h"
+#include "argus_irq.h"
 
 status_t S2PI_SetBaudRate(uint32_t baudRate_Bps);
 
@@ -137,7 +138,28 @@ static void S2PI_SetGPIOMode(uint32_t mode) {
 	HAL_GPIO_Init(s2pi_.GPIOs[S2PI_MOSI].Port, &GPIO_InitStruct);
 }
 
-status_t S2PI_CaptureGpioControl(s2pi_slave_t slave) {
+/*!*****************************************************************************
+ * @brief Captures the S2PI pins for GPIO usage.
+ * @details The SPI is disabled (module status: #STATUS_S2PI_GPIO_MODE) and the
+ * pins are configured for GPIO operation. The GPIO control must be
+ * release with the #S2PI_ReleaseGpioControl function in order to
+ * switch back to ordinary SPI functionality.
+ * @return Returns the \link #status_t status\endlink (#STATUS_OK on success).
+ *****************************************************************************/
+status_t S2PI_CaptureGpioControl(void) {
+	/* Check if something is ongoing. */
+	IRQ_LOCK();
+	status_t status = s2pi_.Status;
+	if (status != STATUS_IDLE) {
+		IRQ_UNLOCK();
+		return status;
+	}
+	s2pi_.Status = STATUS_S2PI_GPIO_MODE;
+	IRQ_UNLOCK();
+	/* Note: Clock must be HI after capturing */
+	HAL_GPIO_WritePin(s2pi_.GPIOs[S2PI_CLK].Port, s2pi_.GPIOs[S2PI_CLK].Pin, GPIO_PIN_SET);
+	S2PI_SetGPIOMode(GPIO_MODE_OUTPUT_PP);
+	return STATUS_OK;
 }
 
 status_t S2PI_ReleaseGpioControl(s2pi_slave_t slave) {
