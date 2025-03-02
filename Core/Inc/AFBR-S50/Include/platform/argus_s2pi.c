@@ -114,6 +114,29 @@ uint32_t S2PI_ReadIrqPin(s2pi_slave_t slave) {
 status_t S2PI_CycleCsPin(s2pi_slave_t slave) {
 }
 
+/*!***************************************************************************
+ * @brief Sets the mode in which the S2PI pins operate.
+ * @details This is a helper function to switch the modes between SPI and GPIO.
+ * @param mode The gpio mode: GPIO_MODE_AF_PP for SPI,
+ * GPIO_MODE_OUTPUT_PP for GPIO.
+ *****************************************************************************/
+static void S2PI_SetGPIOMode(uint32_t mode) {
+	GPIO_InitTypeDef GPIO_InitStruct;
+	/* SPI CLK GPIO pin configuration */
+	GPIO_InitStruct.Pin = s2pi_.GPIOs[S2PI_CLK].Pin;
+	GPIO_InitStruct.Mode = mode;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+	GPIO_InitStruct.Alternate = s2pi_.SpiAlternate;
+	HAL_GPIO_Init(s2pi_.GPIOs[S2PI_CLK].Port, &GPIO_InitStruct);
+	/* SPI MISO GPIO pin configuration */
+	GPIO_InitStruct.Pin = s2pi_.GPIOs[S2PI_MISO].Pin;
+	HAL_GPIO_Init(s2pi_.GPIOs[S2PI_MISO].Port, &GPIO_InitStruct);
+	/* SPI MOSI GPIO pin configuration */
+	GPIO_InitStruct.Pin = s2pi_.GPIOs[S2PI_MOSI].Pin;
+	HAL_GPIO_Init(s2pi_.GPIOs[S2PI_MOSI].Port, &GPIO_InitStruct);
+}
+
 status_t S2PI_CaptureGpioControl(s2pi_slave_t slave) {
 }
 
