@@ -52,6 +52,20 @@ s2pi_handle_t s2pi_ = {
 	}
 };
 
+/*! An additional delay to be added after each GPIO access in order to decrease
+ * the baud rate of the software EEPROM protocol. Increase the delay if timing
+ * issues occur while reading the EERPOM.
+ * e.g. Delay = 10 µsec => Baud Rate < 100 kHz */
+#ifndef S2PI_GPIO_DELAY_US
+#define S2PI_GPIO_DELAY_US 10
+#endif
+#if (S2PI_GPIO_DELAY_US == 0)
+#define S2PI_GPIO_DELAY() ((void)0)
+#else
+#include "time.h"
+#define S2PI_GPIO_DELAY() Time_DelayUSec(S2PI_GPIO_DELAY_US)
+#endif
+
 status_t S2PI_Init(SPI_HandleTypeDef *defaultSlave, uint32_t baudRate_Bps) {
 	if (defaultSlave != &hspi2)
 		return ERROR_S2PI_INVALID_SLAVE;
