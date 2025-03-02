@@ -1,4 +1,4 @@
-/*************************************************************************//**
+/*************************************************************************/ /**
  * @file
  * @brief   Tests for the AFBR-S50 API hardware abstraction layer.
  *
@@ -63,33 +63,53 @@
 static status_t VerifyHALImplementation(s2pi_slave_t spi_slave);
 
 static status_t TimerPlausibilityTest(void);
+
 static status_t TimerWraparoundTest(void);
+
 static status_t SpiConnectionTest(s2pi_slave_t slave);
+
 static status_t SpiMaxLengthTest(s2pi_slave_t slave);
+
 //static status_t SpiInterruptTest(s2pi_slave_t slave);
 static status_t GpioInterruptTest(s2pi_slave_t slave);
+
 static status_t GpioModeTest(s2pi_slave_t slave);
+
 static status_t TimerTest(s2pi_slave_t slave);
+
 static status_t PITTest(void);
+
 static status_t SpiTransferFromInterruptTest(s2pi_slave_t slave);
 
 static status_t CheckTimerCounterValues(uint32_t hct, uint32_t lct);
-static status_t SPITransferSync(s2pi_slave_t slave, uint8_t * data, size_t size);
+
+static status_t SPITransferSync(s2pi_slave_t slave, uint8_t *data, size_t size);
+
 static status_t ConfigureDevice(s2pi_slave_t slave, int8_t rcoTrim);
-static status_t TriggerMeasurement(s2pi_slave_t slave, uint16_t samples, s2pi_callback_t callback, void * callbackData);
-static status_t ReadEEPROM(s2pi_slave_t slave, uint8_t * eeprom);
-static status_t ReadRcoTrim(s2pi_slave_t slave, int8_t * RcoTrim);
+
+static status_t TriggerMeasurement(s2pi_slave_t slave, uint16_t samples, s2pi_callback_t callback, void *callbackData);
+
+static status_t ReadEEPROM(s2pi_slave_t slave, uint8_t *eeprom);
+
+static status_t ReadRcoTrim(s2pi_slave_t slave, int8_t *RcoTrim);
+
 static status_t RunMeasurement(s2pi_slave_t slave, uint16_t samples);
+
 static status_t RunPITTest(uint32_t exp_dt_us, uint32_t n);
 
-static void PIT_Callback(void * param);
-static void GPIO_Callback(void * param);
+static void PIT_Callback(void *param);
+
+static void GPIO_Callback(void *param);
 
 /// @cond EXTERN
-extern uint32_t EEPROM_ReadChipId(uint8_t const * eeprom);
-extern uint8_t EEPROM_ReadModule(uint8_t const * eeprom);
-extern status_t EEPROM_Read(s2pi_slave_t slave, uint8_t address, uint8_t * data);
-extern uint8_t hamming_decode(uint8_t const * code, uint8_t * data);
+extern uint32_t EEPROM_ReadChipId(uint8_t const *eeprom);
+
+extern uint8_t EEPROM_ReadModule(uint8_t const *eeprom);
+
+extern status_t EEPROM_Read(s2pi_slave_t slave, uint8_t address, uint8_t *data);
+
+extern uint8_t hamming_decode(uint8_t const *code, uint8_t *data);
+
 /// @endcond
 
 /******************************************************************************
@@ -100,27 +120,23 @@ extern uint8_t hamming_decode(uint8_t const * code, uint8_t * data);
  * Code
  ******************************************************************************/
 
-status_t Argus_VerifyHALImplementation(s2pi_slave_t spi_slave)
-{
-    print("########################################################\n");
-    print("#   Running HAL Verification Test - " HAL_TEST_VERSION "\n");
-    print("########################################################\n");
-    print("- SPI Slave: %d \n\n", spi_slave);
+status_t Argus_VerifyHALImplementation(s2pi_slave_t spi_slave) {
+	print("########################################################\n");
+	print("#   Running HAL Verification Test - " HAL_TEST_VERSION "\n");
+	print("########################################################\n");
+	print("- SPI Slave: %d \n\n", spi_slave);
 
-    const status_t status = VerifyHALImplementation(spi_slave);
+	const status_t status = VerifyHALImplementation(spi_slave);
 
-    print("########################################################\n");
-    if (status != STATUS_OK)
-    {
-        print("#   FAIL: HAL Verification Test finished with error %d!\n", status);
-    }
-    else
-    {
-        print("#   PASS: HAL Verification Test finished successfully!\n");
-    }
-    print("########################################################\n\n");
+	print("########################################################\n");
+	if (status != STATUS_OK) {
+		print("#   FAIL: HAL Verification Test finished with error %d!\n", status);
+	} else {
+		print("#   PASS: HAL Verification Test finished successfully!\n");
+	}
+	print("########################################################\n\n");
 
-    return status;
+	return status;
 }
 
 /*!***************************************************************************
@@ -132,63 +148,59 @@ status_t Argus_VerifyHALImplementation(s2pi_slave_t spi_slave)
  *
  * @return  Returns the \link #status_t status\endlink (#STATUS_OK on success).
  *****************************************************************************/
-static status_t VerifyHALImplementation(s2pi_slave_t spi_slave)
-{
-    status_t status = STATUS_OK;
+static status_t VerifyHALImplementation(s2pi_slave_t spi_slave) {
+	status_t status = STATUS_OK;
 
-    print("1 > Timer Plausibility Test\n");
-    status = TimerPlausibilityTest();
-    if (status != STATUS_OK) return status;
-    print("1 > PASS\n\n");
+	print("1 > Timer Plausibility Test\n");
+	status = TimerPlausibilityTest();
+	if (status != STATUS_OK) return status;
+	print("1 > PASS\n\n");
 
-    print("2 > Timer Wraparound Test\n");
-    status = TimerWraparoundTest();
-    if (status != STATUS_OK) return status;
-    print("2 > PASS\n\n");
+	print("2 > Timer Wraparound Test\n");
+	status = TimerWraparoundTest();
+	if (status != STATUS_OK) return status;
+	print("2 > PASS\n\n");
 
-    print("3 > SPI Connection Test\n");
-    status = SpiConnectionTest(spi_slave);
-    if (status != STATUS_OK) return status;
-    print("3 > PASS\n\n");
+	print("3 > SPI Connection Test\n");
+	status = SpiConnectionTest(spi_slave);
+	if (status != STATUS_OK) return status;
+	print("3 > PASS\n\n");
 
-    print("4 > SPI Maximum Data Length Test\n");
-    status = SpiMaxLengthTest(spi_slave);
-    if (status != STATUS_OK) return status;
-    print("4 > PASS\n\n");
+	print("4 > SPI Maximum Data Length Test\n");
+	status = SpiMaxLengthTest(spi_slave);
+	if (status != STATUS_OK) return status;
+	print("4 > PASS\n\n");
 
-    print("5 > GPIO Interrupt Test\n");
-    status = GpioInterruptTest(spi_slave);
-    if (status != STATUS_OK) return status;
-    print("5 > PASS\n\n");
+	print("5 > GPIO Interrupt Test\n");
+	status = GpioInterruptTest(spi_slave);
+	if (status != STATUS_OK) return status;
+	print("5 > PASS\n\n");
 
-    print("6 > GPIO Mode Test\n");
-    status = GpioModeTest(spi_slave);
-    if (status != STATUS_OK) return status;
-    print("6 > PASS\n\n");
+	print("6 > GPIO Mode Test\n");
+	status = GpioModeTest(spi_slave);
+	if (status != STATUS_OK) return status;
+	print("6 > PASS\n\n");
 
-    print("7 > Lifetime Counter Timer (LTC) Test\n");
-    status = TimerTest(spi_slave);
-    if (status != STATUS_OK) return status;
-    print("7 > PASS\n\n");
+	print("7 > Lifetime Counter Timer (LTC) Test\n");
+	status = TimerTest(spi_slave);
+	if (status != STATUS_OK) return status;
+	print("7 > PASS\n\n");
 
-    print("8 > Periodic Interrupt Timer (PIT) Test\n");
-    status = PITTest();
-    if (status == ERROR_NOT_IMPLEMENTED)
-    {
-        print("8 > SKIPPED (PIT is not implemented)\n\n");
-    }
-    else
-    {
-        if (status != STATUS_OK) return status;
-        print("8 > PASS\n\n");
-    }
+	print("8 > Periodic Interrupt Timer (PIT) Test\n");
+	status = PITTest();
+	if (status == ERROR_NOT_IMPLEMENTED) {
+		print("8 > SKIPPED (PIT is not implemented)\n\n");
+	} else {
+		if (status != STATUS_OK) return status;
+		print("8 > PASS\n\n");
+	}
 
-    print("9 > SPI Interrupt Test\n");
-    status = SpiTransferFromInterruptTest(spi_slave);
-    if (status != STATUS_OK) return status;
-    print("9 > PASS\n\n");
+	print("9 > SPI Interrupt Test\n");
+	status = SpiTransferFromInterruptTest(spi_slave);
+	if (status != STATUS_OK) return status;
+	print("9 > PASS\n\n");
 
-    return status;
+	return status;
 }
 
 /*!***************************************************************************
@@ -202,17 +214,15 @@ static status_t VerifyHALImplementation(s2pi_slave_t spi_slave)
  *          - #STATUS_OK on success.
  *          - #ERROR_FAIL on failure (check the error log for more information).
  *****************************************************************************/
-static status_t CheckTimerCounterValues(uint32_t hct, uint32_t lct)
-{
-    if (lct > 999999)
-    {
-        error_log("Timer plausibility check:\n"
-                  "The parameter \"lct\" of Timer_GetCounterValue() must always "
-                  "be within 0 and 999999.\n"
-                  "Current Values: hct = %d, lct = %d", hct, lct);
-        return ERROR_FAIL;
-    }
-    return STATUS_OK;
+static status_t CheckTimerCounterValues(uint32_t hct, uint32_t lct) {
+	if (lct > 999999) {
+		error_log("Timer plausibility check:\n"
+		          "The parameter \"lct\" of Timer_GetCounterValue() must always "
+		          "be within 0 and 999999.\n"
+		          "Current Values: hct = %d, lct = %d", hct, lct);
+		return ERROR_FAIL;
+	}
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
@@ -235,46 +245,44 @@ static status_t CheckTimerCounterValues(uint32_t hct, uint32_t lct)
  *          - #STATUS_OK on success.
  *          - #ERROR_FAIL on failure (check the error log for more information).
  *****************************************************************************/
-static status_t TimerPlausibilityTest(void)
-{
-    uint32_t hct0 = 0;
-    uint32_t lct0 = 0;
-    uint32_t hct1 = 0;
-    uint32_t lct1 = 0;
+static status_t TimerPlausibilityTest(void) {
+	uint32_t hct0 = 0;
+	uint32_t lct0 = 0;
+	uint32_t hct1 = 0;
+	uint32_t lct1 = 0;
 
-    /* Get some start values */
-    Timer_GetCounterValue(&hct0, &lct0);
+	/* Get some start values */
+	Timer_GetCounterValue(&hct0, &lct0);
 
-    /* Check max value is not exceeded for LCT timer (us) */
-    status_t status = CheckTimerCounterValues(hct0, lct0);
-    if (status != STATUS_OK) return status;
+	/* Check max value is not exceeded for LCT timer (us) */
+	status_t status = CheckTimerCounterValues(hct0, lct0);
+	if (status != STATUS_OK) return status;
 
-    /* Adding a delay. Depending on MCU speed, this takes any time.
-     * However, the Timer should be able to solve this on any MCU. */
-    for (volatile uint32_t i = 0; i < 100000; ++i) __asm("nop");
+	/* Adding a delay. Depending on MCU speed, this takes any time.
+	 * However, the Timer should be able to solve this on any MCU. */
+	for (volatile uint32_t i = 0; i < 100000; ++i) __asm("nop");
 
-    /* Get new timer value and verify some time has elapsed. */
-    Timer_GetCounterValue(&hct1, &lct1);
+	/* Get new timer value and verify some time has elapsed. */
+	Timer_GetCounterValue(&hct1, &lct1);
 
-    /* Check max value is not exceeded for LCT timer (us) */
-    status = CheckTimerCounterValues(hct1, lct1);
-    if (status != STATUS_OK) return status;
+	/* Check max value is not exceeded for LCT timer (us) */
+	status = CheckTimerCounterValues(hct1, lct1);
+	if (status != STATUS_OK) return status;
 
-    /* Either the hct value must have been increased or the lct value if the hct
-     * value is still the same. */
-    if (!((hct1 > hct0) || ((hct1 == hct0) && (lct1 > lct0))))
-    {
-        error_log("Timer plausibility check: the elapsed time could not be "
-                  "measured with the Timer_GetCounterValue() function; no time "
-                  "has elapsed!\n"
-                  "The delay was induced by the following code:\n"
-                  "for (volatile uint32_t i = 0; i < 100000; ++i) __asm(\"nop\");\n",
-                  "Current Values: hct0 = %d, lct0 = %d, hct1 = %d, lct1 = %d",
-                  hct0, lct0, hct1, lct1);
-        return ERROR_FAIL;
-    }
+	/* Either the hct value must have been increased or the lct value if the hct
+	 * value is still the same. */
+	if (!((hct1 > hct0) || ((hct1 == hct0) && (lct1 > lct0)))) {
+		error_log("Timer plausibility check: the elapsed time could not be "
+		          "measured with the Timer_GetCounterValue() function; no time "
+		          "has elapsed!\n"
+		          "The delay was induced by the following code:\n"
+		          "for (volatile uint32_t i = 0; i < 100000; ++i) __asm(\"nop\");\n",
+		          "Current Values: hct0 = %d, lct0 = %d, hct1 = %d, lct1 = %d",
+		          hct0, lct0, hct1, lct1);
+		return ERROR_FAIL;
+	}
 
-    return STATUS_OK;
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
@@ -297,61 +305,58 @@ static status_t TimerPlausibilityTest(void)
  *          - #STATUS_OK on success.
  *          - #ERROR_FAIL on failure (check the error log for more information).
  *****************************************************************************/
-static status_t TimerWraparoundTest(void)
-{
-    /* Test parameter configuration: *****************************************/
-    const uint8_t n = 2;        // The number of wraparounds to test.
-    /*************************************************************************/
+static status_t TimerWraparoundTest(void) {
+	/* Test parameter configuration: *****************************************/
+	const uint8_t n = 2; // The number of wraparounds to test.
+	/*************************************************************************/
 
-    uint32_t hct0 = 0;
-    uint32_t lct0 = 0;
-    uint32_t hct1 = 0;
-    uint32_t lct1 = 0;
+	uint32_t hct0 = 0;
+	uint32_t lct0 = 0;
+	uint32_t hct1 = 0;
+	uint32_t lct1 = 0;
 
-    /* Get some start values. */
-    Timer_GetCounterValue(&hct0, &lct0);
+	/* Get some start values. */
+	Timer_GetCounterValue(&hct0, &lct0);
 
-    /* Check max value is not exceeded for LCT timer (us) */
-    status_t status = CheckTimerCounterValues(hct0, lct0);
-    if (status != STATUS_OK) return status;
+	/* Check max value is not exceeded for LCT timer (us) */
+	status_t status = CheckTimerCounterValues(hct0, lct0);
+	if (status != STATUS_OK) return status;
 
-    /* Set end after 2 seconds, i.e. 2 wrap around events. */
-    uint32_t hct2 = hct0 + n;
-    uint32_t lct2 = lct0;
+	/* Set end after 2 seconds, i.e. 2 wrap around events. */
+	uint32_t hct2 = hct0 + n;
+	uint32_t lct2 = lct0;
 
-    /* Periodically read timer values. From previous tests we
-     * already know the timer value is increasing. */
-    while (hct0 < hct2 || lct0 < lct2)
-    {
-        /* add counter a , which is increasing by +1, 1000000 or 1000,
-         * different MCU different times get stuck for hard code value */
-        Timer_GetCounterValue(&hct1, &lct1);
+	/* Periodically read timer values. From previous tests we
+	 * already know the timer value is increasing. */
+	while (hct0 < hct2 || lct0 < lct2) {
+		/* add counter a , which is increasing by +1, 1000000 or 1000,
+		 * different MCU different times get stuck for hard code value */
+		Timer_GetCounterValue(&hct1, &lct1);
 
-        /* Check max value is not exceeded for LCT timer (us) */
-        status = CheckTimerCounterValues(hct0, lct0);
-        if (status != STATUS_OK) return status;
+		/* Check max value is not exceeded for LCT timer (us) */
+		status = CheckTimerCounterValues(hct0, lct0);
+		if (status != STATUS_OK) return status;
 
-        /* Testing if calls to Timer_GetCounterValue are equal or increasing.
-         * Also testing if wraparound is correctly handled.
-         * Assumption here is that two sequential calls to the get functions are
-         * only a few µs apart! I.e. if hct wraps, the new lct must be smaller
-         * than previous one. */
-        if (!(((hct1 == hct0 + 1) && (lct1 < lct0))
-                || ((hct1 == hct0) && (lct1 >= lct0))))
-        {
-            error_log("Timer plausibility check: the wraparound of \"lct\" or "
-                      "\"hct\" parameters of the Timer_GetCounterValue() "
-                      "function was not handled correctly!\n"
-                      "Current Values: hct0 = %d, lct0 = %d, hct1 = %d, lct1 = %d",
-                      hct0, lct0, hct1, lct1);
-            return ERROR_FAIL;
-        }
+		/* Testing if calls to Timer_GetCounterValue are equal or increasing.
+		 * Also testing if wraparound is correctly handled.
+		 * Assumption here is that two sequential calls to the get functions are
+		 * only a few µs apart! I.e. if hct wraps, the new lct must be smaller
+		 * than previous one. */
+		if (!(((hct1 == hct0 + 1) && (lct1 < lct0))
+		      || ((hct1 == hct0) && (lct1 >= lct0)))) {
+			error_log("Timer plausibility check: the wraparound of \"lct\" or "
+			          "\"hct\" parameters of the Timer_GetCounterValue() "
+			          "function was not handled correctly!\n"
+			          "Current Values: hct0 = %d, lct0 = %d, hct1 = %d, lct1 = %d",
+			          hct0, lct0, hct1, lct1);
+			return ERROR_FAIL;
+		}
 
-        hct0 = hct1;
-        lct0 = lct1;
-    }
+		hct0 = hct1;
+		lct0 = lct1;
+	}
 
-    return STATUS_OK;
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
@@ -367,10 +372,9 @@ static status_t TimerWraparoundTest(void)
  *
  * @return  Returns #STATUS_OK.
  *****************************************************************************/
-static status_t SpiTransferInterruptCallback(status_t status, void * param)
-{
-    *((status_t*)param) = status;
-    return STATUS_OK;
+static status_t SpiTransferInterruptCallback(status_t status, void *param) {
+	*((status_t *) param) = status;
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
@@ -399,59 +403,52 @@ static status_t SpiTransferInterruptCallback(status_t status, void * param)
  *          - The S2PI layer error code if #S2PI_TransferFrame or #S2PI_GetStatus
  *            return any negative status.
  *****************************************************************************/
-static status_t SPITransferSync(s2pi_slave_t slave, uint8_t * data, size_t size)
-{
-    /* Test parameter configuration: *****************************************/
-    const uint32_t timeout_ms = 100;    // The transfer timeout in ms.
-    /*************************************************************************/
+static status_t SPITransferSync(s2pi_slave_t slave, uint8_t *data, size_t size) {
+	/* Test parameter configuration: *****************************************/
+	const uint32_t timeout_ms = 100; // The transfer timeout in ms.
+	/*************************************************************************/
 
-    /* The status will be changed in the SPI callback. */
-    volatile status_t callbackStatus = STATUS_BUSY;
+	/* The status will be changed in the SPI callback. */
+	volatile status_t callbackStatus = STATUS_BUSY;
 
-    status_t status = S2PI_TransferFrame(slave, data, data, size,
-                                         SpiTransferInterruptCallback,
-                                         (void*)&callbackStatus);
-    if (status != STATUS_OK)
-    {
-        error_log("SPI transfer failed! The call to S2PI_TransferFrame "
-                  "yielded error code: %d",
-                  status);
-        return status;
-    }
+	status_t status = S2PI_TransferFrame(slave, data, data, size,
+	                                     SpiTransferInterruptCallback,
+	                                     (void *) &callbackStatus);
+	if (status != STATUS_OK) {
+		error_log("SPI transfer failed! The call to S2PI_TransferFrame "
+		          "yielded error code: %d",
+		          status);
+		return status;
+	}
 
-    /* Wait until the transfer is finished using a timeout.
-     * Note: this already utilizes the timer HAL. So we might
-     * need to test the timer before the SPI connection test. */
-    ltc_t start;
-    Time_GetNow(&start);
-    do
-    {
-        status = S2PI_GetStatus(slave);
-        if (status < STATUS_OK)
-        {
-            error_log("SPI transfer failed! The call to S2PI_GetStatus "
-                      "yielded error code: %d", status);
-            S2PI_Abort(slave);
-            return status;
-        }
-        if (Time_CheckTimeoutMSec(&start, timeout_ms))
-        {
-            error_log("SPI transfer failed! The operation did not finished "
-                      "within %d ms. This may also be caused by an invalid "
-                      "timer implementation!", timeout_ms);
-            return ERROR_TIMEOUT;
-        }
-    }
-    while (status == STATUS_BUSY);
+	/* Wait until the transfer is finished using a timeout.
+	 * Note: this already utilizes the timer HAL. So we might
+	 * need to test the timer before the SPI connection test. */
+	ltc_t start;
+	Time_GetNow(&start);
+	do {
+		status = S2PI_GetStatus();
+		if (status < STATUS_OK) {
+			error_log("SPI transfer failed! The call to S2PI_GetStatus "
+			          "yielded error code: %d", status);
+			S2PI_Abort(slave);
+			return status;
+		}
+		if (Time_CheckTimeoutMSec(&start, timeout_ms)) {
+			error_log("SPI transfer failed! The operation did not finished "
+			          "within %d ms. This may also be caused by an invalid "
+			          "timer implementation!", timeout_ms);
+			return ERROR_TIMEOUT;
+		}
+	} while (status == STATUS_BUSY);
 
-    if (callbackStatus != STATUS_OK)
-    {
-        error_log("Invocation of the SPI callback failed! The SPI transfer "
-                  "callback yielded error code: %d", callbackStatus);
-        return callbackStatus;
-    }
+	if (callbackStatus != STATUS_OK) {
+		error_log("Invocation of the SPI callback failed! The SPI transfer "
+		          "callback yielded error code: %d", callbackStatus);
+		return callbackStatus;
+	}
 
-    return status;
+	return status;
 }
 
 /*!***************************************************************************
@@ -490,45 +487,40 @@ static status_t SPITransferSync(s2pi_slave_t slave, uint8_t * data, size_t size)
  *          - The S2PI layer error code if #S2PI_TransferFrame, #S2PI_GetStatus
  *            or the SPI callback yield any negative status.
  *****************************************************************************/
-static status_t SpiConnectionTest(s2pi_slave_t slave)
-{
-    status_t status = STATUS_OK;
-    uint8_t data[17U] = { 0 };
+static status_t SpiConnectionTest(s2pi_slave_t slave) {
+	status_t status = STATUS_OK;
+	uint8_t data[17U] = {0};
 
-    /* Transfer a pattern to the register */
-    data[0] = 0x04; // Laser Pattern Register Address
-    for (uint8_t i = 1; i < 17U; ++i) data[i] = i;
-    status = SPITransferSync(slave, data, 17U);
-    if (status != STATUS_OK)
-    {
-        error_log("SPI connection test failed!");
-        return status;
-    }
+	/* Transfer a pattern to the register */
+	data[0] = 0x04; // Laser Pattern Register Address
+	for (uint8_t i = 1; i < 17U; ++i) data[i] = i;
+	status = SPITransferSync(slave, data, 17U);
+	if (status != STATUS_OK) {
+		error_log("SPI connection test failed!");
+		return status;
+	}
 
-    /* Clear the laser pattern and read back previous values. */
-    data[0] = 0x04; // Laser Pattern Register Address
-    for (uint8_t i = 1; i < 17U; ++i) data[i] = 0;
-    status = SPITransferSync(slave, data, 17U);
-    if (status != STATUS_OK)
-    {
-        error_log("SPI connection test failed!");
-        return status;
-    }
+	/* Clear the laser pattern and read back previous values. */
+	data[0] = 0x04; // Laser Pattern Register Address
+	for (uint8_t i = 1; i < 17U; ++i) data[i] = 0;
+	status = SPITransferSync(slave, data, 17U);
+	if (status != STATUS_OK) {
+		error_log("SPI connection test failed!");
+		return status;
+	}
 
-    /* Verify the read pattern. */
-    for (uint8_t i = 1; i < 17U; ++i)
-    {
-        if (data[i] != i)
-        {
-            error_log("SPI connection test failed!\n"
-                      "Verification of read data is invalid!\n"
-                      "read_data[%d] = %d, but expected was %d",
-                      i, data[i], i);
-            return ERROR_FAIL;
-        }
-    }
+	/* Verify the read pattern. */
+	for (uint8_t i = 1; i < 17U; ++i) {
+		if (data[i] != i) {
+			error_log("SPI connection test failed!\n"
+			          "Verification of read data is invalid!\n"
+			          "read_data[%d] = %d, but expected was %d",
+			          i, data[i], i);
+			return ERROR_FAIL;
+		}
+	}
 
-    return STATUS_OK;
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
@@ -570,79 +562,73 @@ static status_t SpiConnectionTest(s2pi_slave_t slave)
  *          - The S2PI layer error code if #S2PI_TransferFrame or #S2PI_GetStatus
  *            return any negative status.
  *****************************************************************************/
-static status_t SpiMaxLengthTest(s2pi_slave_t slave)
-{
-    status_t status = STATUS_OK;
-    uint8_t data[400U] = { 0 };
+static status_t SpiMaxLengthTest(s2pi_slave_t slave) {
+	status_t status = STATUS_OK;
+	uint8_t data[400U] = {0};
 
-    /* Setup device (enable DMA mode). */
-    data[0] = 0x10; data[1] = 0x12;
-    status = SPITransferSync(slave, data, 2);
-    if (status != STATUS_OK)
-    {
-        error_log("Device configuration failed!");
-        return status;
-    }
+	/* Setup device (enable DMA mode). */
+	data[0] = 0x10;
+	data[1] = 0x12;
+	status = SPITransferSync(slave, data, 2);
+	if (status != STATUS_OK) {
+		error_log("Device configuration failed!");
+		return status;
+	}
 
-    data[0] = 0x12; data[1] = 0x00; data[2] = 0x2B;
-    status = SPITransferSync(slave, data, 3);
-    if (status != STATUS_OK)
-    {
-        error_log("Device configuration failed!");
-        return status;
-    }
+	data[0] = 0x12;
+	data[1] = 0x00;
+	data[2] = 0x2B;
+	status = SPITransferSync(slave, data, 3);
+	if (status != STATUS_OK) {
+		error_log("Device configuration failed!");
+		return status;
+	}
 
-    /* Transfer a pattern to the register */
-    for (uint32_t i = 0; i < sizeof(data); i += 4)
-    {
-        data[i + 0] = 0x1E;             // Address
-        data[i + 1] = (uint8_t)i;       // Random Data Byte 0
-        data[i + 2] = (uint8_t)(i + 1); // Random Data Byte 1
-        data[i + 3] = (uint8_t)(i * 2); // Random Data Byte 2
-    }
+	/* Transfer a pattern to the register */
+	for (uint32_t i = 0; i < sizeof(data); i += 4) {
+		data[i + 0] = 0x1E; // Address
+		data[i + 1] = (uint8_t) i; // Random Data Byte 0
+		data[i + 2] = (uint8_t) (i + 1); // Random Data Byte 1
+		data[i + 3] = (uint8_t) (i * 2); // Random Data Byte 2
+	}
 
-    status = SPITransferSync(slave, data, sizeof(data));
-    if (status != STATUS_OK)
-    {
-        error_log("SPI maximum data length test failed!");
-        return status;
-    }
+	status = SPITransferSync(slave, data, sizeof(data));
+	if (status != STATUS_OK) {
+		error_log("SPI maximum data length test failed!");
+		return status;
+	}
 
-    /* Repeat ... */
-    for (uint32_t i = 0; i < sizeof(data); i += 4)
-    {
-        data[i + 0] = 0x1E;             // Address
-        data[i + 1] = (uint8_t)i;       // Random Data Byte 0
-        data[i + 2] = (uint8_t)(i + 1); // Random Data Byte 1
-        data[i + 3] = (uint8_t)(i * 2); // Random Data Byte 2
-    }
+	/* Repeat ... */
+	for (uint32_t i = 0; i < sizeof(data); i += 4) {
+		data[i + 0] = 0x1E; // Address
+		data[i + 1] = (uint8_t) i; // Random Data Byte 0
+		data[i + 2] = (uint8_t) (i + 1); // Random Data Byte 1
+		data[i + 3] = (uint8_t) (i * 2); // Random Data Byte 2
+	}
 
-    status = SPITransferSync(slave, data, sizeof(data));
-    if (status != STATUS_OK)
-    {
-        error_log("SPI maximum data length test failed!");
-        return status;
-    }
+	status = SPITransferSync(slave, data, sizeof(data));
+	if (status != STATUS_OK) {
+		error_log("SPI maximum data length test failed!");
+		return status;
+	}
 
-    /* Verify the read pattern; skip all address bytes. */
-    for (uint32_t i = 0; i < sizeof(data); i += 4)
-    {
-        uint32_t j = (i + 4) % sizeof(data);
-        if (data[j + 1] != (uint8_t)i
-         || data[j + 2] != (uint8_t)(i + 1)
-         || data[j + 3] != (uint8_t)(i * 2))
-        {
-            error_log("SPI maximum data length test failed!\n"
-                      "Verification of read data is invalid at byte %d!\n"
-                      " - expected: 0x%02X%02X%02X\n"
-                      " - actual:   0x%02X%02X%02X",
-                      i, (uint8_t)i, (uint8_t)(i + 1), (uint8_t)(i * 2),
-                      data[j + 1], data[j + 2], data[j + 3]);
-            return ERROR_FAIL;
-        }
-    }
+	/* Verify the read pattern; skip all address bytes. */
+	for (uint32_t i = 0; i < sizeof(data); i += 4) {
+		uint32_t j = (i + 4) % sizeof(data);
+		if (data[j + 1] != (uint8_t) i
+		    || data[j + 2] != (uint8_t) (i + 1)
+		    || data[j + 3] != (uint8_t) (i * 2)) {
+			error_log("SPI maximum data length test failed!\n"
+			          "Verification of read data is invalid at byte %d!\n"
+			          " - expected: 0x%02X%02X%02X\n"
+			          " - actual:   0x%02X%02X%02X",
+			          i, (uint8_t)i, (uint8_t)(i + 1), (uint8_t)(i * 2),
+			          data[j + 1], data[j + 2], data[j + 3]);
+			return ERROR_FAIL;
+		}
+	}
 
-    return STATUS_OK;
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
@@ -674,100 +660,88 @@ static status_t SpiMaxLengthTest(s2pi_slave_t slave)
  *          - The S2PI layer error code if #S2PI_TransferFrame or #S2PI_GetStatus
  *            return any negative status.
  *****************************************************************************/
-static status_t ConfigureDevice(s2pi_slave_t slave, int8_t rcoTrim)
-{
-    /* Setup Device and Trigger Measurement. */
-    assert(rcoTrim >= -34 && rcoTrim < 0x3F - 34);
-    const uint16_t v = (uint16_t)(0x0010U | (((uint16_t)(34 + rcoTrim) & 0x3F) << 6U));
-    uint8_t d1[] = { 0x14U, (uint8_t)(v >> 8U), v & 0xFFU, 0x21U };
-    status_t status = SPITransferSync(slave, d1, sizeof(d1));
-    if (status != STATUS_OK)
-    {
-        error_log("Device configuration failed!");
-        return status;
-    }
+static status_t ConfigureDevice(s2pi_slave_t slave, int8_t rcoTrim) {
+	/* Setup Device and Trigger Measurement. */
+	assert(rcoTrim >= -34 && rcoTrim < 0x3F - 34);
+	const uint16_t v = (uint16_t) (0x0010U | (((uint16_t) (34 + rcoTrim) & 0x3F) << 6U));
+	uint8_t d1[] = {0x14U, (uint8_t) (v >> 8U), v & 0xFFU, 0x21U};
+	status_t status = SPITransferSync(slave, d1, sizeof(d1));
+	if (status != STATUS_OK) {
+		error_log("Device configuration failed!");
+		return status;
+	}
 
-    uint8_t d2[] = { 0x16, 0x7F, 0xFF, 0x7F, 0xE9 };
-    status = SPITransferSync(slave, d2, sizeof(d2));
-    if (status != STATUS_OK)
-    {
-        error_log("Device configuration failed!");
-        return status;
-    }
+	uint8_t d2[] = {0x16, 0x7F, 0xFF, 0x7F, 0xE9};
+	status = SPITransferSync(slave, d2, sizeof(d2));
+	if (status != STATUS_OK) {
+		error_log("Device configuration failed!");
+		return status;
+	}
 
-    uint8_t d3[] = { 0x18, 0x00, 0x00, 0x03 };
-    status = SPITransferSync(slave, d3, sizeof(d3));
-    if (status != STATUS_OK)
-    {
-        error_log("Device configuration failed!");
-        return status;
-    }
+	uint8_t d3[] = {0x18, 0x00, 0x00, 0x03};
+	status = SPITransferSync(slave, d3, sizeof(d3));
+	if (status != STATUS_OK) {
+		error_log("Device configuration failed!");
+		return status;
+	}
 
-    uint8_t d4[] = { 0x10, 0x12 };
-    status = SPITransferSync(slave, d4, sizeof(d4));
-    if (status != STATUS_OK)
-    {
-        error_log("Device configuration failed!");
-        return status;
-    }
+	uint8_t d4[] = {0x10, 0x12};
+	status = SPITransferSync(slave, d4, sizeof(d4));
+	if (status != STATUS_OK) {
+		error_log("Device configuration failed!");
+		return status;
+	}
 
-    uint8_t d5[] = { 0x12, 0x00, 0x2B };
-    status = SPITransferSync(slave, d5, sizeof(d5));
-    if (status != STATUS_OK)
-    {
-        error_log("Device configuration failed!");
-        return status;
-    }
+	uint8_t d5[] = {0x12, 0x00, 0x2B};
+	status = SPITransferSync(slave, d5, sizeof(d5));
+	if (status != STATUS_OK) {
+		error_log("Device configuration failed!");
+		return status;
+	}
 
-    uint8_t d6[] = { 0x08, 0x04, 0x84, 0x10 };
-    status = SPITransferSync(slave, d6, sizeof(d6));
-    if (status != STATUS_OK)
-    {
-        error_log("Device configuration failed!");
-        return status;
-    }
+	uint8_t d6[] = {0x08, 0x04, 0x84, 0x10};
+	status = SPITransferSync(slave, d6, sizeof(d6));
+	if (status != STATUS_OK) {
+		error_log("Device configuration failed!");
+		return status;
+	}
 
-    uint8_t d7[] = { 0x0A, 0xFE, 0x51, 0x0F, 0x05 };
-    status = SPITransferSync(slave, d7, sizeof(d7));
-    if (status != STATUS_OK)
-    {
-        error_log("Device configuration failed!");
-        return status;
-    }
+	uint8_t d7[] = {0x0A, 0xFE, 0x51, 0x0F, 0x05};
+	status = SPITransferSync(slave, d7, sizeof(d7));
+	if (status != STATUS_OK) {
+		error_log("Device configuration failed!");
+		return status;
+	}
 
-    uint8_t d8[] = { 0x0C, 0x00, 0x00, 0x00 };
-    status = SPITransferSync(slave, d8, sizeof(d8));
-    if (status != STATUS_OK)
-    {
-        error_log("Device configuration failed!");
-        return status;
-    }
+	uint8_t d8[] = {0x0C, 0x00, 0x00, 0x00};
+	status = SPITransferSync(slave, d8, sizeof(d8));
+	if (status != STATUS_OK) {
+		error_log("Device configuration failed!");
+		return status;
+	}
 
-    uint8_t d9[] = { 0x1E, 0x00, 0x00, 0x00 };
-    status = SPITransferSync(slave, d9, sizeof(d9));
-    if (status != STATUS_OK)
-    {
-        error_log("Device configuration failed!");
-        return status;
-    }
+	uint8_t d9[] = {0x1E, 0x00, 0x00, 0x00};
+	status = SPITransferSync(slave, d9, sizeof(d9));
+	if (status != STATUS_OK) {
+		error_log("Device configuration failed!");
+		return status;
+	}
 
-    uint8_t d10[] = { 0x20, 0x01, 0xFF, 0xFF };
-    status = SPITransferSync(slave, d10, sizeof(d10));
-    if (status != STATUS_OK)
-    {
-        error_log("Device configuration failed!");
-        return status;
-    }
+	uint8_t d10[] = {0x20, 0x01, 0xFF, 0xFF};
+	status = SPITransferSync(slave, d10, sizeof(d10));
+	if (status != STATUS_OK) {
+		error_log("Device configuration failed!");
+		return status;
+	}
 
-    uint8_t d11[] = { 0x22, 0xFF, 0xFF, 0x04 };
-    status = SPITransferSync(slave, d11, sizeof(d11));
-    if (status != STATUS_OK)
-    {
-        error_log("Device configuration failed!");
-        return status;
-    }
+	uint8_t d11[] = {0x22, 0xFF, 0xFF, 0x04};
+	status = SPITransferSync(slave, d11, sizeof(d11));
+	if (status != STATUS_OK) {
+		error_log("Device configuration failed!");
+		return status;
+	}
 
-    return status;
+	return status;
 }
 
 /*!***************************************************************************
@@ -801,29 +775,27 @@ static status_t ConfigureDevice(s2pi_slave_t slave, int8_t rcoTrim)
  *            return any negative status.
  *****************************************************************************/
 static status_t TriggerMeasurement(s2pi_slave_t slave, uint16_t samples,
-                                   s2pi_callback_t callback, void * callbackData)
-{
-    // samples is zero based, i.e. writing 0 yields 1 sample
-    samples = samples > 0 ? samples - 1 : samples;
-    const uint16_t v = (uint16_t)(0x8000U | ((samples & 0x03FFU) << 5U));
+                                   s2pi_callback_t callback, void *callbackData) {
+	// samples is zero based, i.e. writing 0 yields 1 sample
+	samples = samples > 0 ? samples - 1 : samples;
+	const uint16_t v = (uint16_t) (0x8000U | ((samples & 0x03FFU) << 5U));
 
-    // data is static as the transfer is asynchronous and the buffer must persist.
-    static uint8_t data[] = { 0x1CU, 0x00U, 0x00U };
-    data[0] = 0x1CU;
-    data[1] = (uint8_t)(v >> 8U);
-    data[2] = v & 0xFFU;
+	// data is static as the transfer is asynchronous and the buffer must persist.
+	static uint8_t data[] = {0x1CU, 0x00U, 0x00U};
+	data[0] = 0x1CU;
+	data[1] = (uint8_t) (v >> 8U);
+	data[2] = v & 0xFFU;
 
-    status_t status = S2PI_TransferFrame(slave, data, data, sizeof(data),
-                                         callback, callbackData);
-    if (status != STATUS_OK)
-    {
-        error_log("SPI transfer failed to trigger measurements! "
-                  "The call to S2PI_TransferFrame yielded error code: %d",
-                  status);
-        return status;
-    }
+	status_t status = S2PI_TransferFrame(slave, data, data, sizeof(data),
+	                                     callback, callbackData);
+	if (status != STATUS_OK) {
+		error_log("SPI transfer failed to trigger measurements! "
+		          "The call to S2PI_TransferFrame yielded error code: %d",
+		          status);
+		return status;
+	}
 
-    return status;
+	return status;
 }
 
 /*!***************************************************************************
@@ -831,23 +803,21 @@ static status_t TriggerMeasurement(s2pi_slave_t slave, uint16_t samples,
  *
  * @details Contains data that is required by the GPIO interrupt test.
  *****************************************************************************/
-typedef struct gpio_data_t
-{
-    /* The S2PI slave parameter passed to the S2PI HAL functions. */
-    s2pi_slave_t Slave;
+typedef struct gpio_data_t {
+	/* The S2PI slave parameter passed to the S2PI HAL functions. */
+	s2pi_slave_t Slave;
 
-    /* The callback status. */
-    volatile status_t Status;
+	/* The callback status. */
+	volatile status_t Status;
 
-    /* The GPIO timeout in milliseconds. */
-    uint32_t Timeout_ms;
+	/* The GPIO timeout in milliseconds. */
+	uint32_t Timeout_ms;
 
-    /* A counter to determine how often the callback is invoked. */
-    volatile uint32_t CallbackInvoked;
+	/* A counter to determine how often the callback is invoked. */
+	volatile uint32_t CallbackInvoked;
 
-    /* The return value of the #S2PI_ReadIrqPin function. */
-    volatile uint32_t ReadIrqPinValue;
-
+	/* The return value of the #S2PI_ReadIrqPin function. */
+	volatile uint32_t ReadIrqPinValue;
 } gpio_data_t;
 
 /*!***************************************************************************
@@ -860,16 +830,14 @@ typedef struct gpio_data_t
  * @param   param The abstract pointer to the boolean value that determines if
  *                the callback is invoked.
  *****************************************************************************/
-static void GPIO_Callback(void * param)
-{
-    if (param == NULL)
-    {
-        error_log("GPIO interrupt test failed: callback parameter \"param\" was NULL!");
-        return;
-    }
+static void GPIO_Callback(void *param) {
+	if (param == NULL) {
+		error_log("GPIO interrupt test failed: callback parameter \"param\" was NULL!");
+		return;
+	}
 
-    gpio_data_t * data = (gpio_data_t*)param;
-    data->CallbackInvoked = 1;
+	gpio_data_t *data = (gpio_data_t *) param;
+	data->CallbackInvoked = 1;
 }
 
 /*!***************************************************************************
@@ -893,60 +861,55 @@ static void GPIO_Callback(void * param)
  *          - The S2PI layer error code that may be received from the S2PI
  *            module via the \p status parameter.
  *****************************************************************************/
-static status_t GPIO_SPI_Callback(status_t status, void * param)
-{
-    IRQ_LOCK(); // prevents GPIO interrupt to preempt if set to higher priority.
+static status_t GPIO_SPI_Callback(status_t status, void *param) {
+	IRQ_LOCK(); // prevents GPIO interrupt to preempt if set to higher priority.
 
-    if (param == NULL)
-    {
-        IRQ_UNLOCK();
-        error_log("GPIO interrupt test failed: callback parameter \"param\" was NULL!");
-        return ERROR_FAIL;
-    }
+	if (param == NULL) {
+		IRQ_UNLOCK();
+		error_log("GPIO interrupt test failed: callback parameter \"param\" was NULL!");
+		return ERROR_FAIL;
+	}
 
-    gpio_data_t * data = (gpio_data_t*)param;
+	gpio_data_t *data = (gpio_data_t *) param;
 
-    if (status != STATUS_OK)
-    {
-        IRQ_UNLOCK();
-        error_log("GPIO interrupt test failed: callback parameter \"status\" was %d!",
-                  status);
-        data->Status = status;
-        return status;
-    }
+	if (status != STATUS_OK) {
+		IRQ_UNLOCK();
+		error_log("GPIO interrupt test failed: callback parameter \"status\" was %d!",
+		          status);
+		data->Status = status;
+		return status;
+	}
 
-    /* The S2PI_ReadIrqPin must correctly return the GPIO IRQ state if the GPIO
-     * interrupt is pending but deferred due to any higher priority or critical
-     * sections. Therefore, the SPI callback with the #IRQ_LOCK/#IRQ_UNLOCK is
-     * used to delay the GPIO callback and test the #S2PI_ReadIrqPin function.
-     *
-     * The purpose is to simulate a delayed GPIO interrupt that can in the
-     * production code happen due to any higher priority interrupts (such as
-     * the SPI interrupt in this test). In those cases, the API relies on the
-     * #S2PI_ReadIrqPin method to obtain if the device has finished in time and
-     * the interrupt is already pending. Otherwise, it would fail with an
-     * timeout due to the deferred GPIO interrupt callback event. */
+	/* The S2PI_ReadIrqPin must correctly return the GPIO IRQ state if the GPIO
+	 * interrupt is pending but deferred due to any higher priority or critical
+	 * sections. Therefore, the SPI callback with the #IRQ_LOCK/#IRQ_UNLOCK is
+	 * used to delay the GPIO callback and test the #S2PI_ReadIrqPin function.
+	 *
+	 * The purpose is to simulate a delayed GPIO interrupt that can in the
+	 * production code happen due to any higher priority interrupts (such as
+	 * the SPI interrupt in this test). In those cases, the API relies on the
+	 * #S2PI_ReadIrqPin method to obtain if the device has finished in time and
+	 * the interrupt is already pending. Otherwise, it would fail with an
+	 * timeout due to the deferred GPIO interrupt callback event. */
 
-    ltc_t start;
-    Time_GetNow(&start);
-    data->ReadIrqPinValue = S2PI_ReadIrqPin(data->Slave);
-    while (data->ReadIrqPinValue)
-    {
-        if (Time_CheckTimeoutMSec(&start, data->Timeout_ms))
-        {
-            IRQ_UNLOCK();
-            error_log("GPIO interrupt test failed! The IRQ pin did not assert "
-                      "to low state when reading from the IRQ callback. "
-                      "Elapsed %d ms.", data->Timeout_ms);
-            data->Status = ERROR_TIMEOUT;
-            return ERROR_TIMEOUT;
-        }
-        data->ReadIrqPinValue = S2PI_ReadIrqPin(data->Slave);
-    }
+	ltc_t start;
+	Time_GetNow(&start);
+	data->ReadIrqPinValue = S2PI_ReadIrqPin(data->Slave);
+	while (data->ReadIrqPinValue) {
+		if (Time_CheckTimeoutMSec(&start, data->Timeout_ms)) {
+			IRQ_UNLOCK();
+			error_log("GPIO interrupt test failed! The IRQ pin did not assert "
+			          "to low state when reading from the IRQ callback. "
+			          "Elapsed %d ms.", data->Timeout_ms);
+			data->Status = ERROR_TIMEOUT;
+			return ERROR_TIMEOUT;
+		}
+		data->ReadIrqPinValue = S2PI_ReadIrqPin(data->Slave);
+	}
 
-    IRQ_UNLOCK();
-    data->Status = STATUS_OK;
-    return STATUS_OK;
+	IRQ_UNLOCK();
+	data->Status = STATUS_OK;
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
@@ -1011,90 +974,82 @@ static status_t GPIO_SPI_Callback(status_t status, void * param)
  *          - The S2PI layer error code if #S2PI_TransferFrame, #S2PI_GetStatus
  *            or #S2PI_SetIrqCallback return any negative status.
  *****************************************************************************/
-static status_t GpioInterruptTest(s2pi_slave_t slave)
-{
-    /* Test parameter configuration: *****************************************/
-    const uint32_t timeout_ms = 300; // timeout for measurement, might be increased..
-    /*************************************************************************/
+static status_t GpioInterruptTest(s2pi_slave_t slave) {
+	/* Test parameter configuration: *****************************************/
+	const uint32_t timeout_ms = 300; // timeout for measurement, might be increased..
+	/*************************************************************************/
 
-    gpio_data_t data = { .Slave = slave,
-                         .Status = ERROR_FAIL,
-                         .Timeout_ms = timeout_ms,
-                         .ReadIrqPinValue = 12345,
-                         .CallbackInvoked = 0 };
+	gpio_data_t data = {
+		.Slave = slave,
+		.Status = ERROR_FAIL,
+		.Timeout_ms = timeout_ms,
+		.ReadIrqPinValue = 12345,
+		.CallbackInvoked = 0
+	};
 
-    /* Install IRQ callback. */
-    status_t status = S2PI_SetIrqCallback(slave, GPIO_Callback, &data);
-    if (status != STATUS_OK)
-    {
-        error_log("GPIO interrupt test failed! The call to S2PI_SetIrqCallback "
-                  "yielded error code: %d", status);
-        return status;
-    }
+	/* Install IRQ callback. */
+	status_t status = S2PI_SetIrqCallback(slave, GPIO_Callback, &data);
+	if (status != STATUS_OK) {
+		error_log("GPIO interrupt test failed! The call to S2PI_SetIrqCallback "
+		          "yielded error code: %d", status);
+		return status;
+	}
 
-    /* Setup Device. */
-    status = ConfigureDevice(slave, 0);
-    if (status != STATUS_OK)
-    {
-        error_log("GPIO interrupt test failed!");
-        return status;
-    }
+	/* Setup Device. */
+	status = ConfigureDevice(slave, 0);
+	if (status != STATUS_OK) {
+		error_log("GPIO interrupt test failed!");
+		return status;
+	}
 
-    /* Check if IRQ is not yet pending. */
-    if (S2PI_ReadIrqPin(slave) == 0)
-    {
-        error_log("GPIO interrupt test failed! The S2PI_ReadIrqPin did "
-                  "return 0 but no interrupt is pending since no "
-                  "measurements are executed yet!");
-        return ERROR_FAIL;
-    };
+	/* Check if IRQ is not yet pending. */
+	if (S2PI_ReadIrqPin(slave) == 0) {
+		error_log("GPIO interrupt test failed! The S2PI_ReadIrqPin did "
+			"return 0 but no interrupt is pending since no "
+			"measurements are executed yet!");
+		return ERROR_FAIL;
+	};
 
-    /* Trigger Measurement. */
-    status = TriggerMeasurement(slave, 0, GPIO_SPI_Callback, &data);
-    if (status != STATUS_OK)
-    {
-        error_log("GPIO interrupt test failed!");
-        return status;
-    }
+	/* Trigger Measurement. */
+	status = TriggerMeasurement(slave, 0, GPIO_SPI_Callback, &data);
+	if (status != STATUS_OK) {
+		error_log("GPIO interrupt test failed!");
+		return status;
+	}
 
-    /* Wait for Interrupt using the callback method. */
-    ltc_t start;
-    Time_GetNow(&start);
-    while (!data.CallbackInvoked)
-    {
-        if (Time_CheckTimeoutMSec(&start, timeout_ms))
-        {
-            error_log("GPIO interrupt test failed! The IRQ callback was not "
-                      "invoked within %d ms.", timeout_ms);
-            return ERROR_TIMEOUT;
-        }
-    }
+	/* Wait for Interrupt using the callback method. */
+	ltc_t start;
+	Time_GetNow(&start);
+	while (!data.CallbackInvoked) {
+		if (Time_CheckTimeoutMSec(&start, timeout_ms)) {
+			error_log("GPIO interrupt test failed! The IRQ callback was not "
+			          "invoked within %d ms.", timeout_ms);
+			return ERROR_TIMEOUT;
+		}
+	}
 
-    /* Verify ... */
-    if (data.Status != STATUS_OK)
-    {
-        error_log("GPIO interrupt test failed! The SPI IRQ callback yielded "
-                  "an error status: %d (expected 0)", data.Status);
-        return ERROR_FAIL;
-    }
+	/* Verify ... */
+	if (data.Status != STATUS_OK) {
+		error_log("GPIO interrupt test failed! The SPI IRQ callback yielded "
+		          "an error status: %d (expected 0)", data.Status);
+		return ERROR_FAIL;
+	}
 
-    if (data.ReadIrqPinValue != 0)
-    {
-        error_log("GPIO interrupt test failed! The IRQ pin returned "
-                  "the wrong value: %d (expected 0)", data.ReadIrqPinValue);
-        return ERROR_FAIL;
-    }
+	if (data.ReadIrqPinValue != 0) {
+		error_log("GPIO interrupt test failed! The IRQ pin returned "
+		          "the wrong value: %d (expected 0)", data.ReadIrqPinValue);
+		return ERROR_FAIL;
+	}
 
-    /* Remove callback. */
-    status = S2PI_SetIrqCallback(slave, 0, 0);
-    if (status != STATUS_OK)
-    {
-        error_log("GPIO interrupt test failed! The call to S2PI_SetIrqCallback "
-                  "with null pointers yielded error code: %d", status);
-        return status;
-    }
+	/* Remove callback. */
+	status = S2PI_SetIrqCallback(slave, 0, 0);
+	if (status != STATUS_OK) {
+		error_log("GPIO interrupt test failed! The call to S2PI_SetIrqCallback "
+		          "with null pointers yielded error code: %d", status);
+		return status;
+	}
 
-    return STATUS_OK;
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
@@ -1121,55 +1076,49 @@ static status_t GpioInterruptTest(s2pi_slave_t slave)
  *            #S2PI_ReleaseGpioControl, #S2PI_WriteGpioPin or
  *            #S2PI_ReadGpioPin return any negative status.
  *****************************************************************************/
-static status_t ReadEEPROM(s2pi_slave_t slave, uint8_t * eeprom)
-{
-    /* Enable EEPROM: */
-    uint8_t d1[] = { 0x12, 0x00, 0x4B };
-    status_t status = SPITransferSync(slave, d1, sizeof(d1));
-    if (status != STATUS_OK)
-    {
-        error_log("EEPROM readout failed (enable EEPROM), "
-                  "error code: %d", status);
-        return status;
-    }
+static status_t ReadEEPROM(s2pi_slave_t slave, uint8_t *eeprom) {
+	/* Enable EEPROM: */
+	uint8_t d1[] = {0x12, 0x00, 0x4B};
+	status_t status = SPITransferSync(slave, d1, sizeof(d1));
+	if (status != STATUS_OK) {
+		error_log("EEPROM readout failed (enable EEPROM), "
+		          "error code: %d", status);
+		return status;
+	}
 
-    uint8_t data[16] = { 0 };
+	uint8_t data[16] = {0};
 
-    /* Readout Data */
-    for (uint8_t address = 0; address < 16; address++)
-    {
-        status = EEPROM_Read(slave, address, &data[address]);
-        if (status != STATUS_OK)
-        {
-            error_log("EEPROM readout failed @ address 0x%02x, "
-                      "error code: %d!", address, status);
-            return status;
-        }
-    }
+	/* Readout Data */
+	for (uint8_t address = 0; address < 16; address++) {
+		status = EEPROM_Read(slave, address, &data[address]);
+		if (status != STATUS_OK) {
+			error_log("EEPROM readout failed @ address 0x%02x, "
+			          "error code: %d!", address, status);
+			return status;
+		}
+	}
 
-    /* Disable EEPROM: */
-    uint8_t d2[] = { 0x12, 0x00, 0x2B };
-    status = SPITransferSync(slave, d2, sizeof(d2));
-    if (status != STATUS_OK)
-    {
-        error_log("EEPROM readout failed (enable EEPROM), "
-                  "error code: %d", status);
-        return status;
-    }
+	/* Disable EEPROM: */
+	uint8_t d2[] = {0x12, 0x00, 0x2B};
+	status = SPITransferSync(slave, d2, sizeof(d2));
+	if (status != STATUS_OK) {
+		error_log("EEPROM readout failed (enable EEPROM), "
+		          "error code: %d", status);
+		return status;
+	}
 
-    /* Apply Hamming Code */
-    uint8_t err = hamming_decode(data, eeprom);
-    if (err != 0)
-    {
-        error_log("EEPROM readout failed! Failed to decoding "
-                  "Hamming weight (Hamming parity error: %d)!", err);
-        return STATUS_ARGUS_EEPROM_BIT_ERROR;
-    }
+	/* Apply Hamming Code */
+	uint8_t err = hamming_decode(data, eeprom);
+	if (err != 0) {
+		error_log("EEPROM readout failed! Failed to decoding "
+		          "Hamming weight (Hamming parity error: %d)!", err);
+		return STATUS_ARGUS_EEPROM_BIT_ERROR;
+	}
 
-    /* Add remaining bit to the end. */
-    eeprom[15] = data[15] & 0x80U;
+	/* Add remaining bit to the end. */
+	eeprom[15] = data[15] & 0x80U;
 
-    return STATUS_OK;
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
@@ -1198,59 +1147,53 @@ static status_t ReadEEPROM(s2pi_slave_t slave, uint8_t * eeprom)
  *            #S2PI_ReleaseGpioControl, #S2PI_WriteGpioPin or
  *            #S2PI_ReadGpioPin return any negative status.
  *****************************************************************************/
-static status_t GpioModeTest(s2pi_slave_t slave)
-{
-    /* Read EEPROM 3 times and verify. */
-    uint8_t eeprom1[16] = { 0 };
-    uint8_t eeprom2[16] = { 0 };
-    uint8_t eeprom3[16] = { 0 };
+static status_t GpioModeTest(s2pi_slave_t slave) {
+	/* Read EEPROM 3 times and verify. */
+	uint8_t eeprom1[16] = {0};
+	uint8_t eeprom2[16] = {0};
+	uint8_t eeprom3[16] = {0};
 
-    status_t status = ReadEEPROM(slave, eeprom1);
-    if (status != STATUS_OK)
-    {
-        error_log("GPIO mode test failed (1st attempt)!");
-        return status;
-    }
+	status_t status = ReadEEPROM(slave, eeprom1);
+	if (status != STATUS_OK) {
+		error_log("GPIO mode test failed (1st attempt)!");
+		return status;
+	}
 
-    status = ReadEEPROM(slave, eeprom2);
-    if (status != STATUS_OK)
-    {
-        error_log("GPIO mode test failed (2nd attempt)!");
-        return status;
-    }
+	status = ReadEEPROM(slave, eeprom2);
+	if (status != STATUS_OK) {
+		error_log("GPIO mode test failed (2nd attempt)!");
+		return status;
+	}
 
-    status = ReadEEPROM(slave, eeprom3);
-    if (status != STATUS_OK)
-    {
-        error_log("GPIO mode test failed (3rd attempt)!");
-        return status;
-    }
+	status = ReadEEPROM(slave, eeprom3);
+	if (status != STATUS_OK) {
+		error_log("GPIO mode test failed (3rd attempt)!");
+		return status;
+	}
 
-    /* Verify EEPROM data. */
-    if ((memcmp(eeprom1, eeprom2, 16) != 0) ||
-        (memcmp(eeprom1, eeprom3, 16) != 0))
-    {
-        error_log("GPIO Mode test failed (data comparison)!\n"
-                  "The data from 3 distinct EEPROM readout does not match!");
-        return ERROR_FAIL;
-    }
+	/* Verify EEPROM data. */
+	if ((memcmp(eeprom1, eeprom2, 16) != 0) ||
+	    (memcmp(eeprom1, eeprom3, 16) != 0)) {
+		error_log("GPIO Mode test failed (data comparison)!\n"
+			"The data from 3 distinct EEPROM readout does not match!");
+		return ERROR_FAIL;
+	}
 
-    /* Check EEPROM data for reasonable chip and module number (i.e. not 0) */
-    uint32_t chipID = EEPROM_ReadChipId(eeprom1);
-    uint8_t module = EEPROM_ReadModule(eeprom1);
+	/* Check EEPROM data for reasonable chip and module number (i.e. not 0) */
+	uint32_t chipID = EEPROM_ReadChipId(eeprom1);
+	uint8_t module = EEPROM_ReadModule(eeprom1);
 
-    if (chipID == 0 || module == 0)
-    {
-        error_log("GPIO Mode test failed (data verification)!\n"
-                  "Invalid EEPROM data: Module = %d; Chip ID = %d!", module, chipID);
-        return ERROR_FAIL;
-    }
+	if (chipID == 0 || module == 0) {
+		error_log("GPIO Mode test failed (data verification)!\n"
+		          "Invalid EEPROM data: Module = %d; Chip ID = %d!", module, chipID);
+		return ERROR_FAIL;
+	}
 
-    print("EEPROM Readout succeeded!\n");
-    print("- Module: %d\n", module);
-    print("- Device ID: %d\n", chipID);
+	print("EEPROM Readout succeeded!\n");
+	print("- Module: %d\n", module);
+	print("- Device ID: %d\n", chipID);
 
-    return STATUS_OK;
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
@@ -1270,27 +1213,23 @@ static status_t GpioModeTest(s2pi_slave_t slave)
  *            #S2PI_ReleaseGpioControl, #S2PI_WriteGpioPin or
  *            #S2PI_ReadGpioPin return any negative status.
  *****************************************************************************/
-static status_t ReadRcoTrim(s2pi_slave_t slave, int8_t * rcotrim)
-{
-    /* Read EEPROM */
-    uint8_t eeprom[16] = { 0 };
-    status_t status = ReadEEPROM(slave, eeprom);
-    if (status != STATUS_OK) return status;
+static status_t ReadRcoTrim(s2pi_slave_t slave, int8_t *rcotrim) {
+	/* Read EEPROM */
+	uint8_t eeprom[16] = {0};
+	status_t status = ReadEEPROM(slave, eeprom);
+	if (status != STATUS_OK) return status;
 
-    uint8_t module = EEPROM_ReadModule(eeprom);
-    if (module > 0 && module < 8)
-    {
-            /* Read RCO Trim Value from EEPROM Map 1/2/3: */
-            *rcotrim = ((int8_t) eeprom[0]) >> 3;
-    }
-    else
-    {
-        /* Uncalibrated module; use all 0 data. */
-        error_log("EEPROM Readout failed! Unknown module number: %d", module);
-        return ERROR_ARGUS_UNKNOWN_MODULE;
-    }
+	uint8_t module = EEPROM_ReadModule(eeprom);
+	if (module > 0 && module < 8) {
+		/* Read RCO Trim Value from EEPROM Map 1/2/3: */
+		*rcotrim = ((int8_t) eeprom[0]) >> 3;
+	} else {
+		/* Uncalibrated module; use all 0 data. */
+		error_log("EEPROM Readout failed! Unknown module number: %d", module);
+		return ERROR_ARGUS_UNKNOWN_MODULE;
+	}
 
-    return status;
+	return status;
 }
 
 /*!***************************************************************************
@@ -1303,9 +1242,8 @@ static status_t ReadRcoTrim(s2pi_slave_t slave, int8_t * rcotrim)
  * @param   param The parameter passed to the #S2PI_SetIrqCallback function as
  *                an abstract pointer to an #status_t type.
  *****************************************************************************/
-static void MeasurementCallback(void * param)
-{
-    *(status_t*) param = STATUS_IDLE;
+static void MeasurementCallback(void *param) {
+	*(status_t *) param = STATUS_IDLE;
 }
 
 /*!***************************************************************************
@@ -1335,55 +1273,49 @@ static void MeasurementCallback(void * param)
  *          - The S2PI layer error code if #S2PI_TransferFrame, #S2PI_GetStatus
  *            or #S2PI_SetIrqCallback return any negative status.
  *****************************************************************************/
-static status_t RunMeasurement(s2pi_slave_t slave, uint16_t samples)
-{
-    /* Test parameter configuration: *****************************************/
-    const uint32_t timeout_ms = 300;    // The transfer timeout in ms.
-    /*************************************************************************/
+static status_t RunMeasurement(s2pi_slave_t slave, uint16_t samples) {
+	/* Test parameter configuration: *****************************************/
+	const uint32_t timeout_ms = 300; // The transfer timeout in ms.
+	/*************************************************************************/
 
-    volatile status_t callbackStatus = STATUS_BUSY;
+	volatile status_t callbackStatus = STATUS_BUSY;
 
-    status_t status = S2PI_SetIrqCallback(slave, MeasurementCallback, (void*)&callbackStatus);
-    if (status != STATUS_OK)
-    {
-        error_log("Failed to run a measurement!\n"
-                  "Call to SetIrqCallback returned code: %d", status);
-        return status;
-    }
+	status_t status = S2PI_SetIrqCallback(slave, MeasurementCallback, (void *) &callbackStatus);
+	if (status != STATUS_OK) {
+		error_log("Failed to run a measurement!\n"
+		          "Call to SetIrqCallback returned code: %d", status);
+		return status;
+	}
 
-    status = TriggerMeasurement(slave, samples, 0, 0);
-    if (status != STATUS_OK)
-    {
-        error_log("Failed to run a measurement!\n"
-                  "Call to TransferFrame returned code: %d", status);
-        return status;
-    }
+	status = TriggerMeasurement(slave, samples, 0, 0);
+	if (status != STATUS_OK) {
+		error_log("Failed to run a measurement!\n"
+		          "Call to TransferFrame returned code: %d", status);
+		return status;
+	}
 
-    /* Wait until the transfer is finished using a timeout. */
+	/* Wait until the transfer is finished using a timeout. */
 
-    ltc_t start;
-    Time_GetNow(&start);
+	ltc_t start;
+	Time_GetNow(&start);
 
-    while (callbackStatus == STATUS_BUSY)
-    {
-        if (Time_CheckTimeoutMSec(&start, timeout_ms))
-        {
-            error_log("Failed to run a measurement!\n"
-                      "Timeout occurred while waiting for the SPI interrupt (%d ms).",
-                      timeout_ms);
-            return ERROR_TIMEOUT;
-        }
-    }
+	while (callbackStatus == STATUS_BUSY) {
+		if (Time_CheckTimeoutMSec(&start, timeout_ms)) {
+			error_log("Failed to run a measurement!\n"
+			          "Timeout occurred while waiting for the SPI interrupt (%d ms).",
+			          timeout_ms);
+			return ERROR_TIMEOUT;
+		}
+	}
 
-    if (callbackStatus != STATUS_OK)
-    {
-        error_log("Failed to run a measurement!\n"
-                  "The SPI callback yielded returned code: %d",
-                  callbackStatus);
-        return callbackStatus;
-    }
+	if (callbackStatus != STATUS_OK) {
+		error_log("Failed to run a measurement!\n"
+		          "The SPI callback yielded returned code: %d",
+		          callbackStatus);
+		return callbackStatus;
+	}
 
-    return STATUS_OK;
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
@@ -1415,94 +1347,88 @@ static status_t RunMeasurement(s2pi_slave_t slave, uint16_t samples)
  *            #S2PI_ReleaseGpioControl, #S2PI_WriteGpioPin or #S2PI_ReadGpioPin
  *            return any negative status.
  *****************************************************************************/
-static status_t TimerTest(s2pi_slave_t slave)
-{
-    /* Test parameter configuration: *****************************************/
-    const int8_t n = 10;                // The number of measurements.
-    const uint32_t ds = 100;            // The step size in averaging samples.
-    const float exp_slope = 102.4f;         // Expected slope is 102.4 µs / phase / sample
-    const float rel_slope_error = 3e-2f; // Relative slope tolerance is 3%.
-    /*************************************************************************/
+static status_t TimerTest(s2pi_slave_t slave) {
+	/* Test parameter configuration: *****************************************/
+	const int8_t n = 10; // The number of measurements.
+	const uint32_t ds = 100; // The step size in averaging samples.
+	const float exp_slope = 102.4f; // Expected slope is 102.4 µs / phase / sample
+	const float rel_slope_error = 3e-2f; // Relative slope tolerance is 3%.
+	/*************************************************************************/
 
-    /* Read RCOTrim value from EEPROM*/
-    int8_t RcoTrim = 0;
-    status_t status = ReadRcoTrim(slave, &RcoTrim);
-    if (status != STATUS_OK)
-    {
-        error_log("Timer test failed!\n"
-                  "EEPROM Read test returned code: %d", status);
-        return status;
-    }
-    print("RCOTrim = %d\n", RcoTrim);
+	/* Read RCOTrim value from EEPROM*/
+	int8_t RcoTrim = 0;
+	status_t status = ReadRcoTrim(slave, &RcoTrim);
+	if (status != STATUS_OK) {
+		error_log("Timer test failed!\n"
+		          "EEPROM Read test returned code: %d", status);
+		return status;
+	}
+	print("RCOTrim = %d\n", RcoTrim);
 
-    /* Configure the device with calibrated RCO to 24MHz. */
-    status = ConfigureDevice(slave, RcoTrim);
-    if (status != STATUS_OK)
-    {
-        error_log("Timer test failed!\n"
-                  "Configuration test returned code: %d", status);
-        return status;
-    }
+	/* Configure the device with calibrated RCO to 24MHz. */
+	status = ConfigureDevice(slave, RcoTrim);
+	if (status != STATUS_OK) {
+		error_log("Timer test failed!\n"
+		          "Configuration test returned code: %d", status);
+		return status;
+	}
 
 
-    /* Run multiple measurements and calculate a linear regression.
-     * Note: this uses float types for simplicity. */
-    float xsum = 0;
-    float ysum = 0;
-    float x2sum = 0;
-    float xysum = 0;
+	/* Run multiple measurements and calculate a linear regression.
+	 * Note: this uses float types for simplicity. */
+	float xsum = 0;
+	float ysum = 0;
+	float x2sum = 0;
+	float xysum = 0;
 
-    print("+-------+---------+------------+\n");
-    print("| count | samples | elapsed us |\n");
-    print("+-------+---------+------------+\n");
-    for (uint8_t i = 1; i <= n; ++i)
-    {
-        ltc_t start;
-        Time_GetNow(&start);
+	print("+-------+---------+------------+\n");
+	print("| count | samples | elapsed us |\n");
+	print("+-------+---------+------------+\n");
+	for (uint8_t i = 1; i <= n; ++i) {
+		ltc_t start;
+		Time_GetNow(&start);
 
-        uint32_t samples = ds * i;
-        assert(samples < UINT16_MAX);
+		uint32_t samples = ds * i;
+		assert(samples < UINT16_MAX);
 
-        status = RunMeasurement(slave, (uint16_t)samples);
-        if (status != STATUS_OK)
-        {
-            error_log("Timer test failed!\n"
-                      "Run measurement returned code: %d",
-                      status);
-            return status;
-        }
+		status = RunMeasurement(slave, (uint16_t) samples);
+		if (status != STATUS_OK) {
+			error_log("Timer test failed!\n"
+			          "Run measurement returned code: %d",
+			          status);
+			return status;
+		}
 
-        uint32_t elapsed_usec = Time_GetElapsedUSec(&start);
+		uint32_t elapsed_usec = Time_GetElapsedUSec(&start);
 
-        xsum += (float) samples;
-        ysum += (float) elapsed_usec;
-        x2sum += (float) samples * (float) samples;
-        xysum += (float) samples * (float) elapsed_usec;
+		xsum += (float) samples;
+		ysum += (float) elapsed_usec;
+		x2sum += (float) samples * (float) samples;
+		xysum += (float) samples * (float) elapsed_usec;
 
-        print("| %5d | %7d | %10d |\n", i, samples, elapsed_usec);
-    }
-    print("+-------+---------+------------+\n");
+		print("| %5d | %7d | %10d |\n", i, samples, elapsed_usec);
+	}
+	print("+-------+---------+------------+\n");
 
 
-    const float slope = (n * xysum - xsum * ysum) / (n * x2sum - xsum * xsum);
-    const float intercept = (ysum * x2sum - xsum * xysum) / (n * x2sum - xsum * xsum);
-    print("Linear Regression: y(x) = %dE-7 sec * x + %dE-7 sec\n",
-          (int) (10 * slope), (int) (10 * intercept));
+	const float slope = (n * xysum - xsum * ysum) / (n * x2sum - xsum * xsum);
+	const float intercept = (ysum * x2sum - xsum * xysum) / (n * x2sum - xsum * xsum);
+	print("Linear Regression: y(x) = %dE-7 sec * x + %dE-7 sec\n",
+	      (int) (10 * slope), (int) (10 * intercept));
 
-    /* Check the error of the slope. */
-    const float max_slope = exp_slope * (1.f + rel_slope_error);
-    const float min_slope = exp_slope * (1.f - rel_slope_error);
-    if (slope > max_slope || slope < min_slope)
-    {
-        error_log("Time test failed!\n"
-                  "The measured time slope does not match the expected value! "
-                  "(actual: %dE-7, expected: %dE-7, min: %dE-7, max: %dE-7)\n",
-                  (int)(10 * slope), (int)(10 * exp_slope),
-                  (int)(10 * min_slope), (int)(10 * max_slope));
-        return ERROR_FAIL;
-    }
+	/* Check the error of the slope. */
+	const float max_slope = exp_slope * (1.f + rel_slope_error);
+	const float min_slope = exp_slope * (1.f - rel_slope_error);
+	if (slope > max_slope || slope < min_slope) {
+		error_log("Time test failed!\n"
+		          "The measured time slope does not match the expected value! "
+		          "(actual: %dE-7, expected: %dE-7, min: %dE-7, max: %dE-7)\n",
+		          (int)(10 * slope), (int)(10 * exp_slope),
+		          (int)(10 * min_slope), (int)(10 * max_slope));
+		return ERROR_FAIL;
+	}
 
-    return STATUS_OK;
+	return STATUS_OK;
 }
 
 
@@ -1511,17 +1437,15 @@ static status_t TimerTest(s2pi_slave_t slave)
  *
  * @details Contains data that is required by the PIT timer test.
  *****************************************************************************/
-typedef struct pit_data_t
-{
-    /*! The number of PIT callback events. */
-    volatile uint32_t n;
+typedef struct pit_data_t {
+	/*! The number of PIT callback events. */
+	volatile uint32_t n;
 
-    /*! The time stamp of the first callback event. */
-    ltc_t t_first;
+	/*! The time stamp of the first callback event. */
+	ltc_t t_first;
 
-    /*! The time stamp of the last callback event. */
-    ltc_t t_last;
-
+	/*! The time stamp of the last callback event. */
+	ltc_t t_last;
 } pit_data_t;
 
 /*!***************************************************************************
@@ -1536,28 +1460,21 @@ typedef struct pit_data_t
  * @param   param An abstract parameter to be passed to the callback. This is
  *                  also the identifier of the given interval.
  *****************************************************************************/
-static void PIT_Callback(void * param)
-{
-    if (param == NULL)
-    {
-        error_log("PIT interrupt test failed: callback parameter \"param\" was NULL!");
-    }
-    else
-    {
-        pit_data_t * data = (pit_data_t*)param;
+static void PIT_Callback(void *param) {
+	if (param == NULL) {
+		error_log("PIT interrupt test failed: callback parameter \"param\" was NULL!");
+	} else {
+		pit_data_t *data = (pit_data_t *) param;
 
-        if (data->n == 0)
-        {
-            Time_GetNow(&data->t_first);
-            data->t_last = data->t_first;
-        }
-        else
-        {
-            Time_GetNow(&data->t_last);
-        }
+		if (data->n == 0) {
+			Time_GetNow(&data->t_first);
+			data->t_last = data->t_first;
+		} else {
+			Time_GetNow(&data->t_last);
+		}
 
-        data->n++;
-    }
+		data->n++;
+	}
 }
 
 /*!***************************************************************************
@@ -1583,114 +1500,104 @@ static void PIT_Callback(void * param)
  *          - The PIT layer error code if #Timer_SetInterval return any
  *            negative status.
  *****************************************************************************/
-static status_t RunPITTest(uint32_t exp_dt_us, uint32_t n)
-{
-    /* Test parameter configuration: *****************************************/
-    const float rel_dt_error = 5e-3f; // Relative timer interval tolerance: 0.5 %.
-    const float abs_dt_error = 5.0f;  // Absolute timer interval tolerance: 5.0 us.
-    /*************************************************************************/
-    float dt = (float) exp_dt_us * rel_dt_error;
-    if (dt < abs_dt_error) dt = abs_dt_error;
-    const float max_dt = (float) exp_dt_us + dt;
-    const float min_dt = (float) exp_dt_us - dt;
-    if (dt < abs_dt_error * 3) dt = abs_dt_error * 3;
-    const float t_first_max = (float) exp_dt_us + dt * 5; // use 5x tolerance for
-    const float t_first_min = (float) exp_dt_us - dt * 5; // the first interval
-    /*************************************************************************/
+static status_t RunPITTest(uint32_t exp_dt_us, uint32_t n) {
+	/* Test parameter configuration: *****************************************/
+	const float rel_dt_error = 5e-3f; // Relative timer interval tolerance: 0.5 %.
+	const float abs_dt_error = 5.0f; // Absolute timer interval tolerance: 5.0 us.
+	/*************************************************************************/
+	float dt = (float) exp_dt_us * rel_dt_error;
+	if (dt < abs_dt_error) dt = abs_dt_error;
+	const float max_dt = (float) exp_dt_us + dt;
+	const float min_dt = (float) exp_dt_us - dt;
+	if (dt < abs_dt_error * 3) dt = abs_dt_error * 3;
+	const float t_first_max = (float) exp_dt_us + dt * 5; // use 5x tolerance for
+	const float t_first_min = (float) exp_dt_us - dt * 5; // the first interval
+	/*************************************************************************/
 
-    print("Run PIT Test (w/ %d us interval):\n"
-          " - expected event count: %d\n"
-          " - expected interval: %d us, min: %d us, max: %d us\n"
-          " - expected first event: %d us, min: %d us, max: %d us\n",
-          exp_dt_us, n, exp_dt_us, (int)min_dt, (int)max_dt,
-          exp_dt_us, (int)t_first_min, (int)t_first_max);
+	print("Run PIT Test (w/ %d us interval):\n"
+	      " - expected event count: %d\n"
+	      " - expected interval: %d us, min: %d us, max: %d us\n"
+	      " - expected first event: %d us, min: %d us, max: %d us\n",
+	      exp_dt_us, n, exp_dt_us, (int) min_dt, (int) max_dt,
+	      exp_dt_us, (int) t_first_min, (int) t_first_max);
 
-    /* Setup the PIT callback with specified interval. */
-    pit_data_t data = { 0 };
-    status_t status = Timer_SetInterval(exp_dt_us, &data);
-    if (status != STATUS_OK)
-    {
-        error_log("PIT test failed!\n"
-                  "Timer_SetInterval returned status code: %d", status);
-        return status;
-    }
+	/* Setup the PIT callback with specified interval. */
+	pit_data_t data = {0};
+	status_t status = Timer_SetInterval(exp_dt_us, &data);
+	if (status != STATUS_OK) {
+		error_log("PIT test failed!\n"
+		          "Timer_SetInterval returned status code: %d", status);
+		return status;
+	}
 
-    /* Wait until n PIT callback have been happened. */
-    const uint32_t timeout_us = (n + 1) * exp_dt_us;
+	/* Wait until n PIT callback have been happened. */
+	const uint32_t timeout_us = (n + 1) * exp_dt_us;
 
-    ltc_t start;
-    Time_GetNow(&start);
-    while (data.n < n)
-    {
-        if (Time_CheckTimeoutUSec(&start, timeout_us))
-        {
-            const uint32_t elapsed_us = Time_GetElapsedUSec(&start);
-            const uint32_t t_first_us = Time_DiffUSec(&start, &data.t_first);
-            const uint32_t t_last_us = Time_DiffUSec(&start, &data.t_last);
-            error_log("PIT test failed!\n"
-                      "Waiting for the PIT interrupt events yielded a timeout.\n"
-                      "Timeout: %d us; Elapsed: %d us (%d of %d events).\n"
-                      "First event @ %d us, last event @ %d us",
-                      timeout_us, elapsed_us, data.n, n, t_first_us, t_last_us);
-            status = ERROR_TIMEOUT;
-            break;
-        }
-    }
+	ltc_t start;
+	Time_GetNow(&start);
+	while (data.n < n) {
+		if (Time_CheckTimeoutUSec(&start, timeout_us)) {
+			const uint32_t elapsed_us = Time_GetElapsedUSec(&start);
+			const uint32_t t_first_us = Time_DiffUSec(&start, &data.t_first);
+			const uint32_t t_last_us = Time_DiffUSec(&start, &data.t_last);
+			error_log("PIT test failed!\n"
+			          "Waiting for the PIT interrupt events yielded a timeout.\n"
+			          "Timeout: %d us; Elapsed: %d us (%d of %d events).\n"
+			          "First event @ %d us, last event @ %d us",
+			          timeout_us, elapsed_us, data.n, n, t_first_us, t_last_us);
+			status = ERROR_TIMEOUT;
+			break;
+		}
+	}
 
-    if (status == STATUS_OK)
-    {
-        /* Disable the PIT timer callback. */
-        status = Timer_SetInterval(0, &data);
-        if (status != STATUS_OK)
-        {
-            error_log("PIT test failed!\n"
-                      "Timer_SetInterval returned status code: %d", status);
-        }
-    }
+	if (status == STATUS_OK) {
+		/* Disable the PIT timer callback. */
+		status = Timer_SetInterval(0, &data);
+		if (status != STATUS_OK) {
+			error_log("PIT test failed!\n"
+			          "Timer_SetInterval returned status code: %d", status);
+		}
+	}
 
-    if (status == STATUS_OK)
-    {
-        /* Check if PIT callback is not invoked any more. */
-        Time_DelayUSec(3 * exp_dt_us);
-        if (data.n > n)
-        {
-            const uint32_t elapsed_us = Time_GetElapsedUSec(&start);
-            error_log("PIT test failed!\n"
-                      "Timer_SetInterval has been called again after it was disabled\n"
-                      "(within %d us; %d of %d events in total).",
-                      elapsed_us, data.n, n);
-            status = ERROR_FAIL;
-        }
-    }
+	if (status == STATUS_OK) {
+		/* Check if PIT callback is not invoked any more. */
+		Time_DelayUSec(3 * exp_dt_us);
+		if (data.n > n) {
+			const uint32_t elapsed_us = Time_GetElapsedUSec(&start);
+			error_log("PIT test failed!\n"
+			          "Timer_SetInterval has been called again after it was disabled\n"
+			          "(within %d us; %d of %d events in total).",
+			          elapsed_us, data.n, n);
+			status = ERROR_FAIL;
+		}
+	}
 
-    /* Verify the measured average timer interval. */
-    const float act_dt_us = (float) Time_DiffUSec(&data.t_first, &data.t_last) / (float) (n - 1);
-    const uint32_t t_first_us = Time_DiffUSec(&start, &data.t_first);
-    const uint32_t t_last_us = Time_DiffUSec(&start, &data.t_last);
+	/* Verify the measured average timer interval. */
+	const float act_dt_us = (float) Time_DiffUSec(&data.t_first, &data.t_last) / (float) (n - 1);
+	const uint32_t t_first_us = Time_DiffUSec(&start, &data.t_first);
+	const uint32_t t_last_us = Time_DiffUSec(&start, &data.t_last);
 
-    print(" - actual event count: %d\n"
-          " - actual interval: %d us\n"
-          " - actual first event: %d us\n"
-          " - actual last event: %d us\n\n",
-          data.n, (int)act_dt_us, t_first_us, t_last_us);
+	print(" - actual event count: %d\n"
+	      " - actual interval: %d us\n"
+	      " - actual first event: %d us\n"
+	      " - actual last event: %d us\n\n",
+	      data.n, (int) act_dt_us, t_first_us, t_last_us);
 
-    if (status == STATUS_OK && (t_first_us > t_first_max || t_first_us < t_first_min))
-    {
-        error_log("PIT test failed!\n"
-                  "The first timer event did not occur after the expected interval!");
-        status = ERROR_FAIL;
-    }
+	if (status == STATUS_OK && (t_first_us > t_first_max || t_first_us < t_first_min)) {
+		error_log("PIT test failed!\n"
+			"The first timer event did not occur after the expected interval!");
+		status = ERROR_FAIL;
+	}
 
-    if (status == STATUS_OK && (act_dt_us > max_dt || act_dt_us < min_dt))
-    {
-        error_log("PIT test failed!\n"
-                  "The measured timer interval does not match the expected value!");
-        status = ERROR_FAIL;
-    }
+	if (status == STATUS_OK && (act_dt_us > max_dt || act_dt_us < min_dt)) {
+		error_log("PIT test failed!\n"
+			"The measured timer interval does not match the expected value!");
+		status = ERROR_FAIL;
+	}
 
-    print(" - test status: %d\n\n", status);
+	print(" - test status: %d\n\n", status);
 
-    return status;
+	return status;
 }
 
 /*!***************************************************************************
@@ -1711,57 +1618,52 @@ static status_t RunPITTest(uint32_t exp_dt_us, uint32_t n)
  *          - The PIT layer error code if #Timer_SetInterval or
  *            #Timer_SetCallback return any negative status.
  *****************************************************************************/
-static status_t PITTest(void)
-{
-    status_t status = Timer_SetCallback(PIT_Callback);
-    if (status == ERROR_NOT_IMPLEMENTED) return status;
-    if  (status != STATUS_OK)
-    {
-        error_log("PIT test failed!\n"
-                  "Timer_SetCallback returned status code: %d", status);
-        return status;
-    }
+static status_t PITTest(void) {
+	status_t status = Timer_SetCallback(PIT_Callback);
+	if (status == ERROR_NOT_IMPLEMENTED) return status;
+	if (status != STATUS_OK) {
+		error_log("PIT test failed!\n"
+		          "Timer_SetCallback returned status code: %d", status);
+		return status;
+	}
 
-    status = RunPITTest(200000, 5);
-    if (status != STATUS_OK) return status;
+	status = RunPITTest(200000, 5);
+	if (status != STATUS_OK) return status;
 
-    status = RunPITTest(10000, 10);
-    if (status != STATUS_OK) return status;
+	status = RunPITTest(10000, 10);
+	if (status != STATUS_OK) return status;
 
-    /* High Speed Test down to 1000 microseconds. If this fails, just print
-     * a message that very high frame rates might have issues. */
-    status = RunPITTest(1000, 500);
-    if (status != STATUS_OK)
-    {
-        print("WARNING: PIT test failed for 1000 us interval!\n"
-              "         This is only critical if high frame rates (up to 1000 fps)\n"
-              "         need to be achieved. Otherwise, the error can be safely ignored.\n");
-        status = STATUS_IGNORE; // ignore
-    }
+	/* High Speed Test down to 1000 microseconds. If this fails, just print
+	 * a message that very high frame rates might have issues. */
+	status = RunPITTest(1000, 500);
+	if (status != STATUS_OK) {
+		print("WARNING: PIT test failed for 1000 us interval!\n"
+			"         This is only critical if high frame rates (up to 1000 fps)\n"
+			"         need to be achieved. Otherwise, the error can be safely ignored.\n");
+		status = STATUS_IGNORE; // ignore
+	}
 
-    if (status == STATUS_OK) // only run if previous test succeeded!
-    {
-        /* High Speed Test down to 333 microseconds. If this fails, just print
-         * a message that very high frame rates might have issues. */
-        status = RunPITTest(333, 500);
-        if (status != STATUS_OK)
-        {
-            print("WARNING: PIT test failed for 333 us interval!\n"
-                  "         This is only critical if very high frame rates (up to 3000 fps)\n"
-                  "         need to be achieved. Otherwise, the error can be safely ignored.\n");
-            status = STATUS_IGNORE; // ignore
-        }
-    }
+	if (status == STATUS_OK) // only run if previous test succeeded!
+	{
+		/* High Speed Test down to 333 microseconds. If this fails, just print
+		 * a message that very high frame rates might have issues. */
+		status = RunPITTest(333, 500);
+		if (status != STATUS_OK) {
+			print("WARNING: PIT test failed for 333 us interval!\n"
+				"         This is only critical if very high frame rates (up to 3000 fps)\n"
+				"         need to be achieved. Otherwise, the error can be safely ignored.\n");
+			status = STATUS_IGNORE; // ignore
+		}
+	}
 
-    status = Timer_SetCallback(0);
-    if (status != STATUS_OK)
-    {
-        error_log("PIT test failed!\n"
-                  "Timer_SetCallback to 0 returned status code: %d", status);
-        return status;
-    }
+	status = Timer_SetCallback(0);
+	if (status != STATUS_OK) {
+		error_log("PIT test failed!\n"
+		          "Timer_SetCallback to 0 returned status code: %d", status);
+		return status;
+	}
 
-    return STATUS_OK;
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
@@ -1771,24 +1673,22 @@ static status_t PITTest(void)
  *          test. The data structure is passed to the corresponding interrupt
  *          callback functions.
  *****************************************************************************/
-typedef struct spi_irq_data_t
-{
-    /*! The status of the interrupt callback function. */
-    volatile status_t Status;
+typedef struct spi_irq_data_t {
+	/*! The status of the interrupt callback function. */
+	volatile status_t Status;
 
-    /*! The S2PI slave parameter passed to the S2PI HAL functions. */
-    s2pi_slave_t Slave;
+	/*! The S2PI slave parameter passed to the S2PI HAL functions. */
+	s2pi_slave_t Slave;
 
-    /*! The data buffer to be transferred from/to the device for testing purposes. */
-    uint8_t Data[17U];
+	/*! The data buffer to be transferred from/to the device for testing purposes. */
+	uint8_t Data[17U];
 
-    /*! Set to true when all SPI transfers are finished. */
-    volatile bool Finished;
+	/*! Set to true when all SPI transfers are finished. */
+	volatile bool Finished;
 
-    /*! Set to true when the second SPI transfers is started.
-        The second transfer is used to read-back the previously set values. */
-    volatile bool ReadBack;
-
+	/*! Set to true when the second SPI transfers is started.
+	    The second transfer is used to read-back the previously set values. */
+	volatile bool ReadBack;
 } spi_irq_data_t;
 
 
@@ -1816,50 +1716,43 @@ typedef struct spi_irq_data_t
  *          - The S2PI layer error code if any is passed to the callback function.
  *          - The S2PI layer error code if #S2PI_TransferFrame return any.
  *****************************************************************************/
-static status_t SpiTransferFromSpiInterruptCallback(status_t status, void * param)
-{
-    if (param == NULL)
-    {
-        error_log("SPI transfer from SPI interrupt test failed\n"
-                  "callback parameter \"param\" was NULL!");
-        return ERROR_INVALID_ARGUMENT;
-    }
+static status_t SpiTransferFromSpiInterruptCallback(status_t status, void *param) {
+	if (param == NULL) {
+		error_log("SPI transfer from SPI interrupt test failed\n"
+			"callback parameter \"param\" was NULL!");
+		return ERROR_INVALID_ARGUMENT;
+	}
 
-    spi_irq_data_t * data = (spi_irq_data_t *) param;
+	spi_irq_data_t *data = (spi_irq_data_t *) param;
 
-    if (status != STATUS_OK)
-    {
-        error_log("SPI transfer from SPI interrupt test failed:\n"
-                  "callback received error! Error code: %d", status);
-        data->Status = status;
-        return status;
-    }
+	if (status != STATUS_OK) {
+		error_log("SPI transfer from SPI interrupt test failed:\n"
+		          "callback received error! Error code: %d", status);
+		data->Status = status;
+		return status;
+	}
 
-    if (!data->ReadBack)
-    {
-        print("Invoking SPI transfer from SPI interrupt callback...\n");
+	if (!data->ReadBack) {
+		print("Invoking SPI transfer from SPI interrupt callback...\n");
 
-        /* Clear the laser pattern and read back previous values. */
-        data->Data[0] = 0x04; // Laser Pattern Register Address
-        for (uint8_t i = 1; i < 17U; ++i) data->Data[i] = 0;
-        status = S2PI_TransferFrame(data->Slave, data->Data, data->Data, 17U,
-                                    SpiTransferFromSpiInterruptCallback, param);
-        if (status != STATUS_OK)
-        {
-            error_log("SPI transfer from SPI interrupt test failed:\n"
-                      "Calling S2PI_TransferFrame from SPI interrupt "
-                      "returned error code: %d", status);
-            data->Status = status;
-            return status;
-        }
-        data->ReadBack = true;
-    }
-    else
-    {
-        data->Finished = true;
-    }
+		/* Clear the laser pattern and read back previous values. */
+		data->Data[0] = 0x04; // Laser Pattern Register Address
+		for (uint8_t i = 1; i < 17U; ++i) data->Data[i] = 0;
+		status = S2PI_TransferFrame(data->Slave, data->Data, data->Data, 17U,
+		                            SpiTransferFromSpiInterruptCallback, param);
+		if (status != STATUS_OK) {
+			error_log("SPI transfer from SPI interrupt test failed:\n"
+			          "Calling S2PI_TransferFrame from SPI interrupt "
+			          "returned error code: %d", status);
+			data->Status = status;
+			return status;
+		}
+		data->ReadBack = true;
+	} else {
+		data->Finished = true;
+	}
 
-    return STATUS_OK;
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
@@ -1885,69 +1778,62 @@ static status_t SpiTransferFromSpiInterruptCallback(status_t status, void * para
  *          - The S2PI layer error code if #S2PI_TransferFrame or the SPI
  *            callback yield in any non-OK status.
  *****************************************************************************/
-static status_t SpiTransferFromSpiInterrupt(s2pi_slave_t slave)
-{
-    /* Test parameter configuration: *****************************************/
-    const uint32_t timeout_us = 100000; // timeout for SPI transfers to finish
-    /*************************************************************************/
+static status_t SpiTransferFromSpiInterrupt(s2pi_slave_t slave) {
+	/* Test parameter configuration: *****************************************/
+	const uint32_t timeout_us = 100000; // timeout for SPI transfers to finish
+	/*************************************************************************/
 
-    status_t status = STATUS_OK;
-    spi_irq_data_t data = { .Slave = slave };
+	status_t status = STATUS_OK;
+	spi_irq_data_t data = {.Slave = slave};
 
-    print("Invoking SPI transfer from task level...\n");
+	print("Invoking SPI transfer from task level...\n");
 
-    /* Transfer a pattern to the register */
-    data.Data[0] = 0x04; // Laser Pattern Register Address
-    for (uint8_t i = 1; i < 17U; ++i) data.Data[i] = i;
-    status = S2PI_TransferFrame(slave, data.Data, data.Data, 17U,
-                                SpiTransferFromSpiInterruptCallback, &data);
-    if (status != STATUS_OK)
-    {
-        error_log("SPI transfer from SPI interrupt test failed:\n"
-                  "Failed to transfer a data frame! Error code: %d", status);
-        return status;
-    }
+	/* Transfer a pattern to the register */
+	data.Data[0] = 0x04; // Laser Pattern Register Address
+	for (uint8_t i = 1; i < 17U; ++i) data.Data[i] = i;
+	status = S2PI_TransferFrame(slave, data.Data, data.Data, 17U,
+	                            SpiTransferFromSpiInterruptCallback, &data);
+	if (status != STATUS_OK) {
+		error_log("SPI transfer from SPI interrupt test failed:\n"
+		          "Failed to transfer a data frame! Error code: %d", status);
+		return status;
+	}
 
-    /* Wait until transfers has finished. */
-    ltc_t start;
-    Time_GetNow(&start);
-    while (!data.Finished && (data.Status == STATUS_OK))
-    {
-        if (Time_CheckTimeoutUSec(&start, timeout_us))
-        {
-            const uint32_t elapsed_us = Time_GetElapsedUSec(&start);
-            error_log("SPI transfer from SPI interrupt test failed:\n"
-                      "Waiting for the transfers to be finished yielded a timeout.\n"
-                      "Timeout: %d us; Elapsed: %d us (%d of %d events).",
-                      timeout_us, elapsed_us);
-            status = ERROR_TIMEOUT;
-            break;
-        }
-    }
+	/* Wait until transfers has finished. */
+	ltc_t start;
+	Time_GetNow(&start);
+	while (!data.Finished && (data.Status == STATUS_OK)) {
+		if (Time_CheckTimeoutUSec(&start, timeout_us)) {
+			const uint32_t elapsed_us = Time_GetElapsedUSec(&start);
+			error_log("SPI transfer from SPI interrupt test failed:\n"
+			          "Waiting for the transfers to be finished yielded a timeout.\n"
+			          "Timeout: %d us; Elapsed: %d us (%d of %d events).",
+			          timeout_us, elapsed_us);
+			status = ERROR_TIMEOUT;
+			break;
+		}
+	}
 
-    if (data.Status != STATUS_OK)
-    {
-        error_log("SPI transfer from SPI interrupt test failed:\n"
-                  "Waiting for the transfers to be finished yielded a error code: %d",
-                  data.Status);
-        return data.Status;
-    }
+	if (data.Status != STATUS_OK) {
+		error_log("SPI transfer from SPI interrupt test failed:\n"
+		          "Waiting for the transfers to be finished yielded a error code: %d",
+		          data.Status);
+		return data.Status;
+	}
 
-    print("Verify read data...\n");
-    /* Verify the read pattern. */
-    for (uint8_t i = 1; i < 17U; ++i)
-    {
-        if (data.Data[i] != i)
-        {
-            error_log("SPI transfer from SPI interrupt test failed:\n"
-                      "Verification of read data is invalid!\n"
-                      "read_data[%d] = %d, but expected was %d",
-                      i, data.Data[i], i);
-            return ERROR_FAIL;
-        }
-    }
+	print("Verify read data...\n");
+	/* Verify the read pattern. */
+	for (uint8_t i = 1; i < 17U; ++i) {
+		if (data.Data[i] != i) {
+			error_log("SPI transfer from SPI interrupt test failed:\n"
+			          "Verification of read data is invalid!\n"
+			          "read_data[%d] = %d, but expected was %d",
+			          i, data.Data[i], i);
+			return ERROR_FAIL;
+		}
+	}
 
-    return STATUS_OK;
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
@@ -1967,31 +1853,28 @@ static status_t SpiTransferFromSpiInterrupt(s2pi_slave_t slave)
  *
  * @param   param The abstract interrupt callback parameter.
  *****************************************************************************/
-static void SpiTransferFromGpioInterruptCallback(void * param)
-{
-    if (param == NULL)
-    {
-        error_log("SPI transfer from GPIO interrupt test failed:\n"
-                  "callback parameter \"param\" was NULL!");
-        return;
-    }
+static void SpiTransferFromGpioInterruptCallback(void *param) {
+	if (param == NULL) {
+		error_log("SPI transfer from GPIO interrupt test failed:\n"
+			"callback parameter \"param\" was NULL!");
+		return;
+	}
 
-    print("Invoking SPI transfer from GPIO interrupt callback...\n");
+	print("Invoking SPI transfer from GPIO interrupt callback...\n");
 
-    /* Clear the laser pattern and read back previous values. */
-    spi_irq_data_t * data = (spi_irq_data_t *) param;
-    data->Data[0] = 0x04; // Laser Pattern Register Address
-    for (uint8_t i = 1; i < 17U; ++i) data->Data[i] = i;
-    status_t status = S2PI_TransferFrame(data->Slave, data->Data, data->Data, 17U,
-                                         SpiTransferFromSpiInterruptCallback, param);
-    if (status != STATUS_OK)
-    {
-        error_log("SPI transfer from GPIO interrupt test failed:\n"
-                  "Calling S2PI_TransferFrame from GPIO interrupt "
-                  "returned error code: %d", status);
-        data->Status = status;
-        return;
-    }
+	/* Clear the laser pattern and read back previous values. */
+	spi_irq_data_t *data = (spi_irq_data_t *) param;
+	data->Data[0] = 0x04; // Laser Pattern Register Address
+	for (uint8_t i = 1; i < 17U; ++i) data->Data[i] = i;
+	status_t status = S2PI_TransferFrame(data->Slave, data->Data, data->Data, 17U,
+	                                     SpiTransferFromSpiInterruptCallback, param);
+	if (status != STATUS_OK) {
+		error_log("SPI transfer from GPIO interrupt test failed:\n"
+		          "Calling S2PI_TransferFrame from GPIO interrupt "
+		          "returned error code: %d", status);
+		data->Status = status;
+		return;
+	}
 }
 
 /*!***************************************************************************
@@ -2016,77 +1899,68 @@ static void SpiTransferFromGpioInterruptCallback(void * param)
  *          - The S2PI layer error code if #S2PI_TransferFrame or the GPIO or
  *            SPI callback yield in any non-OK status.
  *****************************************************************************/
-static status_t SpiTransferFromGpioInterrupt(s2pi_slave_t slave)
-{
-    /* Test parameter configuration: *****************************************/
-    const uint32_t timeout_ms = 300; // timeout for measurement, might be increased..
-    /*************************************************************************/
+static status_t SpiTransferFromGpioInterrupt(s2pi_slave_t slave) {
+	/* Test parameter configuration: *****************************************/
+	const uint32_t timeout_ms = 300; // timeout for measurement, might be increased..
+	/*************************************************************************/
 
-    spi_irq_data_t data = { .Slave = slave };
+	spi_irq_data_t data = {.Slave = slave};
 
-    /* Install IRQ callback. */
-    status_t status = S2PI_SetIrqCallback(slave, SpiTransferFromGpioInterruptCallback, &data);
-    if (status != STATUS_OK)
-    {
-        error_log("SPI transfer from GPIO interrupt test failed:\n"
-                  "The call to S2PI_SetIrqCallback returned error code: %d", status);
-        return status;
-    }
+	/* Install IRQ callback. */
+	status_t status = S2PI_SetIrqCallback(slave, SpiTransferFromGpioInterruptCallback, &data);
+	if (status != STATUS_OK) {
+		error_log("SPI transfer from GPIO interrupt test failed:\n"
+		          "The call to S2PI_SetIrqCallback returned error code: %d", status);
+		return status;
+	}
 
-    /* Setup Device for invoking GPIO interrupt. */
-    status = ConfigureDevice(slave, 0);
-    if (status != STATUS_OK)
-    {
-        error_log("SPI transfer from GPIO interrupt test failed.");
-        return status;
-    }
+	/* Setup Device for invoking GPIO interrupt. */
+	status = ConfigureDevice(slave, 0);
+	if (status != STATUS_OK) {
+		error_log("SPI transfer from GPIO interrupt test failed.");
+		return status;
+	}
 
-    /* Trigger Measurement and invoke GPIO interrupt. */
-    status = TriggerMeasurement(slave, 0, 0, 0);
-    if (status != STATUS_OK)
-    {
-        error_log("GPIO interrupt test failed!");
-        return status;
-    }
+	/* Trigger Measurement and invoke GPIO interrupt. */
+	status = TriggerMeasurement(slave, 0, 0, 0);
+	if (status != STATUS_OK) {
+		error_log("GPIO interrupt test failed!");
+		return status;
+	}
 
-    ltc_t start;
-    Time_GetNow(&start);
+	ltc_t start;
+	Time_GetNow(&start);
 
-    /* Wait for Interrupt using the callback method. */
-    while (!data.Finished)
-    {
-        if (Time_CheckTimeoutMSec(&start, timeout_ms))
-        {
-            error_log("SPI transfer from GPIO interrupt test failed:\n"
-                      "The IRQ callback was not invoked within %d ms.",
-                      timeout_ms);
-            return ERROR_TIMEOUT;
-        }
-    }
+	/* Wait for Interrupt using the callback method. */
+	while (!data.Finished) {
+		if (Time_CheckTimeoutMSec(&start, timeout_ms)) {
+			error_log("SPI transfer from GPIO interrupt test failed:\n"
+			          "The IRQ callback was not invoked within %d ms.",
+			          timeout_ms);
+			return ERROR_TIMEOUT;
+		}
+	}
 
-    if (data.Status != STATUS_OK)
-    {
-        error_log("SPI transfer from GPIO interrupt test failed:\n"
-                  "Waiting for the transfers to be finished yielded a error code: %d",
-                  data.Status);
-        return data.Status;
-    }
+	if (data.Status != STATUS_OK) {
+		error_log("SPI transfer from GPIO interrupt test failed:\n"
+		          "Waiting for the transfers to be finished yielded a error code: %d",
+		          data.Status);
+		return data.Status;
+	}
 
-    print("Verify read data...\n");
-    /* Verify the read pattern. */
-    for (uint8_t i = 1; i < 17U; ++i)
-    {
-        if (data.Data[i] != i)
-        {
-            error_log("SPI transfer from GPIO interrupt test failed:\n"
-                      "Verification of read data is invalid!\n"
-                      "read_data[%d] = %d, but expected was %d",
-                      i, data.Data[i], i);
-            return ERROR_FAIL;
-        }
-    }
+	print("Verify read data...\n");
+	/* Verify the read pattern. */
+	for (uint8_t i = 1; i < 17U; ++i) {
+		if (data.Data[i] != i) {
+			error_log("SPI transfer from GPIO interrupt test failed:\n"
+			          "Verification of read data is invalid!\n"
+			          "read_data[%d] = %d, but expected was %d",
+			          i, data.Data[i], i);
+			return ERROR_FAIL;
+		}
+	}
 
-    return STATUS_OK;
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
@@ -2106,42 +1980,38 @@ static status_t SpiTransferFromGpioInterrupt(s2pi_slave_t slave)
  *
  * @param   param The abstract interrupt callback parameter.
  *****************************************************************************/
-static void SpiTransferFromPitInterruptCallback(void * param)
-{
-    status_t status = Timer_SetInterval(0, param); // disable timer
-    if (status != STATUS_OK)
-    {
-        error_log("SPI transfer from PIT interrupt test failed:\n"
-                  "Timer_SetCallback to 0 returned status code: %d",
-                  status);
-        if (param != NULL) ((spi_irq_data_t*)param)->Status = status;
-        return;
-    }
+static void SpiTransferFromPitInterruptCallback(void *param) {
+	status_t status = Timer_SetInterval(0, param); // disable timer
+	if (status != STATUS_OK) {
+		error_log("SPI transfer from PIT interrupt test failed:\n"
+		          "Timer_SetCallback to 0 returned status code: %d",
+		          status);
+		if (param != NULL) ((spi_irq_data_t *) param)->Status = status;
+		return;
+	}
 
 
-    if (param == NULL)
-    {
-        error_log("SPI transfer from PIT interrupt test failed:\n"
-                  "callback parameter \"param\" was NULL!");
-        return;
-    }
+	if (param == NULL) {
+		error_log("SPI transfer from PIT interrupt test failed:\n"
+			"callback parameter \"param\" was NULL!");
+		return;
+	}
 
-    print("Invoking SPI transfer from PIT interrupt callback...\n");
+	print("Invoking SPI transfer from PIT interrupt callback...\n");
 
-    /* Clear the laser pattern and read back previous values. */
-    spi_irq_data_t * data = (spi_irq_data_t *) param;
-    data->Data[0] = 0x04; // Laser Pattern Register Address
-    for (uint8_t i = 1; i < 17U; ++i) data->Data[i] = i;
-    status = S2PI_TransferFrame(data->Slave, data->Data, data->Data, 17U,
-                                SpiTransferFromSpiInterruptCallback, param);
-    if (status != STATUS_OK)
-    {
-        error_log("SPI transfer from PIT interrupt test failed:\n"
-                  "Calling S2PI_TransferFrame from GPIO interrupt "
-                  "returned error code: %d", status);
-        data->Status = status;
-        return;
-    }
+	/* Clear the laser pattern and read back previous values. */
+	spi_irq_data_t *data = (spi_irq_data_t *) param;
+	data->Data[0] = 0x04; // Laser Pattern Register Address
+	for (uint8_t i = 1; i < 17U; ++i) data->Data[i] = i;
+	status = S2PI_TransferFrame(data->Slave, data->Data, data->Data, 17U,
+	                            SpiTransferFromSpiInterruptCallback, param);
+	if (status != STATUS_OK) {
+		error_log("SPI transfer from PIT interrupt test failed:\n"
+		          "Calling S2PI_TransferFrame from GPIO interrupt "
+		          "returned error code: %d", status);
+		data->Status = status;
+		return;
+	}
 }
 
 /*!***************************************************************************
@@ -2174,79 +2044,70 @@ static void SpiTransferFromPitInterruptCallback(void * param)
  *          - The PIT layer error code if #Timer_SetCallback or the PIT
  *            callback yield in any non-OK status.
  *****************************************************************************/
-static status_t SpiTransferFromPitInterrupt(s2pi_slave_t slave)
-{
-    /* Test parameter configuration: *****************************************/
-    const uint32_t timeout_ms = 100;    // timeout for test.
-    const uint32_t interval_us = 1000;  // PIT interval for the first event.
-    /*************************************************************************/
+static status_t SpiTransferFromPitInterrupt(s2pi_slave_t slave) {
+	/* Test parameter configuration: *****************************************/
+	const uint32_t timeout_ms = 100; // timeout for test.
+	const uint32_t interval_us = 1000; // PIT interval for the first event.
+	/*************************************************************************/
 
-    spi_irq_data_t data = { .Slave = slave };
+	spi_irq_data_t data = {.Slave = slave};
 
-    status_t status = Timer_SetCallback(SpiTransferFromPitInterruptCallback);
-    if (status == ERROR_NOT_IMPLEMENTED) return status;
-    if  (status != STATUS_OK)
-    {
-        error_log("SPI transfer from PIT interrupt test failed:\n"
-                  "Timer_SetCallback returned status code: %d", status);
-        return status;
-    }
+	status_t status = Timer_SetCallback(SpiTransferFromPitInterruptCallback);
+	if (status == ERROR_NOT_IMPLEMENTED) return status;
+	if (status != STATUS_OK) {
+		error_log("SPI transfer from PIT interrupt test failed:\n"
+		          "Timer_SetCallback returned status code: %d", status);
+		return status;
+	}
 
-    /* Setup the PIT callback with specified interval. */
-    status = Timer_SetInterval(interval_us, &data);
-    if (status != STATUS_OK)
-    {
-        error_log("SPI transfer from PIT interrupt test failed:\n"
-                  "Timer_SetInterval returned status code: %d", status);
-        return status;
-    }
+	/* Setup the PIT callback with specified interval. */
+	status = Timer_SetInterval(interval_us, &data);
+	if (status != STATUS_OK) {
+		error_log("SPI transfer from PIT interrupt test failed:\n"
+		          "Timer_SetInterval returned status code: %d", status);
+		return status;
+	}
 
-    ltc_t start;
-    Time_GetNow(&start);
+	ltc_t start;
+	Time_GetNow(&start);
 
-    /* Wait for test to be finished. */
-    while (!data.Finished)
-    {
-        if (Time_CheckTimeoutMSec(&start, timeout_ms))
-        {
-            error_log("SPI transfer from PIT interrupt test failed:\n"
-                      "The IRQ callback was not invoked within %d ms.",
-                      timeout_ms);
-            return ERROR_TIMEOUT;
-        }
-    }
+	/* Wait for test to be finished. */
+	while (!data.Finished) {
+		if (Time_CheckTimeoutMSec(&start, timeout_ms)) {
+			error_log("SPI transfer from PIT interrupt test failed:\n"
+			          "The IRQ callback was not invoked within %d ms.",
+			          timeout_ms);
+			return ERROR_TIMEOUT;
+		}
+	}
 
-    if (data.Status != STATUS_OK)
-    {
-        error_log("SPI transfer from PIT interrupt test failed:\n"
-                  "Waiting for the transfers to be finished yielded a error code: %d",
-                  data.Status);
-        return data.Status;
-    }
+	if (data.Status != STATUS_OK) {
+		error_log("SPI transfer from PIT interrupt test failed:\n"
+		          "Waiting for the transfers to be finished yielded a error code: %d",
+		          data.Status);
+		return data.Status;
+	}
 
-    status = Timer_SetCallback(0);
-    if (status != STATUS_OK)
-    {
-        error_log("SPI transfer from PIT interrupt test failed:\n"
-                  "Timer_SetCallback to 0 returned status code: %d", status);
-        return status;
-    }
+	status = Timer_SetCallback(0);
+	if (status != STATUS_OK) {
+		error_log("SPI transfer from PIT interrupt test failed:\n"
+		          "Timer_SetCallback to 0 returned status code: %d", status);
+		return status;
+	}
 
-    print("Verify read data...\n");
-    /* Verify the read pattern. */
-    for (uint8_t i = 1; i < 17U; ++i)
-    {
-        if (data.Data[i] != i)
-        {
-            error_log("SPI transfer from PIT interrupt test failed:\n"
-                      "Verification of read data is invalid!\n"
-                      "read_data[%d] = %d, but expected was %d",
-                      i, data.Data[i], i);
-            return ERROR_FAIL;
-        }
-    }
+	print("Verify read data...\n");
+	/* Verify the read pattern. */
+	for (uint8_t i = 1; i < 17U; ++i) {
+		if (data.Data[i] != i) {
+			error_log("SPI transfer from PIT interrupt test failed:\n"
+			          "Verification of read data is invalid!\n"
+			          "read_data[%d] = %d, but expected was %d",
+			          i, data.Data[i], i);
+			return ERROR_FAIL;
+		}
+	}
 
-    return STATUS_OK;
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
@@ -2279,33 +2140,29 @@ static status_t SpiTransferFromPitInterrupt(s2pi_slave_t slave)
  *          - The S2PI layer error code if #S2PI_TransferFrame or #S2PI_GetStatus
  *            return any negative status.
  *****************************************************************************/
-static status_t SpiTransferFromInterruptTest(s2pi_slave_t slave)
-{
-    status_t status = STATUS_OK;
+static status_t SpiTransferFromInterruptTest(s2pi_slave_t slave) {
+	status_t status = STATUS_OK;
 
-    print(" .1 >> SPI Transfer from SPI Interrupt Test\n");
-    status = SpiTransferFromSpiInterrupt(slave);
-    if (status != STATUS_OK) return status;
-    print(" .1 >> PASS\n\n");
+	print(" .1 >> SPI Transfer from SPI Interrupt Test\n");
+	status = SpiTransferFromSpiInterrupt(slave);
+	if (status != STATUS_OK) return status;
+	print(" .1 >> PASS\n\n");
 
-    print(" .2 >> SPI Transfer from GPIO Interrupt Test\n");
-    status = SpiTransferFromGpioInterrupt(slave);
-    if (status != STATUS_OK) return status;
-    print(" .2 >> PASS\n\n");
+	print(" .2 >> SPI Transfer from GPIO Interrupt Test\n");
+	status = SpiTransferFromGpioInterrupt(slave);
+	if (status != STATUS_OK) return status;
+	print(" .2 >> PASS\n\n");
 
-    print(" .3 >> SPI Transfer from PIT Interrupt Test\n");
-    status = SpiTransferFromPitInterrupt(slave);
-    if (status == ERROR_NOT_IMPLEMENTED)
-    {
-        print(" .3 >> SKIPPED (PIT is not implemented)\n\n");
-    }
-    else
-    {
-        if (status != STATUS_OK) return status;
-        print(" .3 >> PASS\n\n");
-    }
+	print(" .3 >> SPI Transfer from PIT Interrupt Test\n");
+	status = SpiTransferFromPitInterrupt(slave);
+	if (status == ERROR_NOT_IMPLEMENTED) {
+		print(" .3 >> SKIPPED (PIT is not implemented)\n\n");
+	} else {
+		if (status != STATUS_OK) return status;
+		print(" .3 >> PASS\n\n");
+	}
 
-    return STATUS_OK;
+	return STATUS_OK;
 }
 
 /*! @} */

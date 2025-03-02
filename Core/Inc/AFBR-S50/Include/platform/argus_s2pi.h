@@ -1,4 +1,4 @@
-/*************************************************************************//**
+/*************************************************************************/ /**
  * @file
  * @brief       This file is part of the AFBR-S50 API.
  * @details     This file provides an interface for the required S2PI module.
@@ -118,37 +118,35 @@ extern "C" {
  *
  * @return  Returns the \link #status_t status\endlink (#STATUS_OK on success).
  *****************************************************************************/
-typedef status_t (*s2pi_callback_t)(status_t status, void * param);
+typedef status_t (*s2pi_callback_t)(status_t status, void *param);
 
 /*!***************************************************************************
  * @brief   S2PI layer callback function type for the GPIO interrupt event.
  *
  * @param   param The provided (optional, can be null) callback parameter.
  *****************************************************************************/
-typedef void (*s2pi_irq_callback_t)(void * param);
+typedef void (*s2pi_irq_callback_t)(void *param);
 
 /*! The S2PI slave identifier. Basically an user defined enumerable type that
  *  can be used to identify the slave within the SPI module. */
 typedef int32_t s2pi_slave_t;
 
 /*! The enumeration of S2PI pins. */
-typedef enum s2pi_pin_t
-{
-    /*! The SPI clock pin. */
-    S2PI_CLK,
+typedef enum s2pi_pin_t {
+	/*! The SPI clock pin. */
+	S2PI_CLK,
 
-    /*! The SPI chip select pin. */
-    S2PI_CS,
+	/*! The SPI chip select pin. */
+	S2PI_CS,
 
-    /*! The SPI MOSI pin. */
-    S2PI_MOSI,
+	/*! The SPI MOSI pin. */
+	S2PI_MOSI,
 
-    /*! The SPI MISO pin. */
-    S2PI_MISO,
+	/*! The SPI MISO pin. */
+	S2PI_MISO,
 
-    /*! The IRQ pin. */
-    S2PI_IRQ
-
+	/*! The IRQ pin. */
+	S2PI_IRQ
 } s2pi_pin_t;
 
 
@@ -164,7 +162,7 @@ typedef enum s2pi_pin_t
  *           - #STATUS_BUSY: An SPI transfer is in progress.
  *           - #STATUS_S2PI_GPIO_MODE: The module is in GPIO mode.
  *****************************************************************************/
-status_t S2PI_GetStatus(s2pi_slave_t slave);
+status_t S2PI_GetStatus(void);
 
 /*!***************************************************************************
  * @brief   Tries to grab the SPI interface mutex for the next transfer.
@@ -290,11 +288,11 @@ void S2PI_ReleaseMutex(s2pi_slave_t slave);
  *                                     was not started.
  *****************************************************************************/
 status_t S2PI_TransferFrame(s2pi_slave_t slave,
-                            uint8_t const * txData,
-                            uint8_t * rxData,
+                            uint8_t const *txData,
+                            uint8_t *rxData,
                             size_t frameSize,
                             s2pi_callback_t callback,
-                            void * callbackData);
+                            void *callbackData);
 
 /*!***************************************************************************
  * @brief   Terminates a currently ongoing asynchronous SPI transfer.
@@ -326,7 +324,7 @@ status_t S2PI_Abort(s2pi_slave_t slave);
  *****************************************************************************/
 status_t S2PI_SetIrqCallback(s2pi_slave_t slave,
                              s2pi_irq_callback_t callback,
-                             void * callbackData);
+                             void *callbackData);
 
 /*!***************************************************************************
  * @brief   Reads the current interrupt pending status of the IRQ pin.
@@ -391,7 +389,7 @@ status_t S2PI_CycleCsPin(s2pi_slave_t slave);
  *
  * @return  Returns the \link #status_t status\endlink (#STATUS_OK on success).
  *****************************************************************************/
-status_t S2PI_CaptureGpioControl(s2pi_slave_t slave);
+status_t S2PI_CaptureGpioControl(void);
 
 /*!*****************************************************************************
  * @brief   Releases the S2PI pins from GPIO usage and switches back to SPI mode.
@@ -408,7 +406,7 @@ status_t S2PI_CaptureGpioControl(s2pi_slave_t slave);
  *
  * @return  Returns the \link #status_t status\endlink (#STATUS_OK on success).
  *****************************************************************************/
-status_t S2PI_ReleaseGpioControl(s2pi_slave_t slave);
+status_t S2PI_ReleaseGpioControl(void);
 
 /*!*****************************************************************************
  * @brief   Writes the output for a specified SPI pin in GPIO mode.
@@ -445,7 +443,7 @@ status_t S2PI_WriteGpioPin(s2pi_slave_t slave, s2pi_pin_t pin, uint32_t value);
  * @param   value The GPIO pin state to read (0 = low, GND level, 1 = high, VCC level).
  * @return  Returns the \link #status_t status\endlink (#STATUS_OK on success).
  *****************************************************************************/
-status_t S2PI_ReadGpioPin(s2pi_slave_t slave, s2pi_pin_t pin, uint32_t * value);
+status_t S2PI_ReadGpioPin(s2pi_slave_t slave, s2pi_pin_t pin, uint32_t *value);
 
 /*! @} */
 #ifdef __cplusplus

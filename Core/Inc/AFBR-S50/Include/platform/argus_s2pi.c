@@ -126,7 +126,30 @@ status_t S2PI_SetIrqCallback(s2pi_slave_t slave,
 uint32_t S2PI_ReadIrqPin(s2pi_slave_t slave) {
 }
 
+/*!***************************************************************************
+ * @brief Cycles the chip select line.
+ * @details In order to cancel the integration on the ASIC, a fast toggling
+ * of the chip select pin of the corresponding SPI slave is required.
+ * Therefore, this function toggles the CS from high to low and back.
+ * The SPI instance for the specified S2PI slave must be idle,
+ * otherwise the status #STATUS_BUSY is returned.
+ * @param slave The specified S2PI slave.
+ * @return Returns the \link #status_t status\endlink (#STATUS_OK on success).
+ *****************************************************************************/
 status_t S2PI_CycleCsPin(s2pi_slave_t slave) {
+	/* Check the driver status. */
+	IRQ_LOCK();
+	status_t status = s2pi_.Status;
+	if (status != STATUS_IDLE) {
+		IRQ_UNLOCK();
+		return status;
+	}
+	s2pi_.Status = STATUS_BUSY;
+	IRQ_UNLOCK();
+	HAL_GPIO_WritePin(s2pi_.GPIOs[S2PI_CS].Port, s2pi_.GPIOs[S2PI_CS].Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(s2pi_.GPIOs[S2PI_CS].Port, s2pi_.GPIOs[S2PI_CS].Pin, GPIO_PIN_SET);
+	s2pi_.Status = STATUS_IDLE;
+	return STATUS_OK;
 }
 
 /*!***************************************************************************
