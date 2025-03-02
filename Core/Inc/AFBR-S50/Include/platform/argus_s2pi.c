@@ -197,8 +197,44 @@ status_t S2PI_ReleaseGpioControl(void) {
 	return STATUS_OK;
 }
 
+/*!*****************************************************************************
+ * @brief Writes the output for a specified SPI pin in GPIO mode.
+ * @details This function writes the value of an SPI pin if the SPI pins are
+ * captured for GPIO operation via the #S2PI_CaptureGpioControl previously.
+ * @param slave The specified S2PI slave.
+ * @param pin The specified S2PI pin.
+ * @param value The GPIO pin state to write (0 = low, 1 = high).
+ * @return Returns the \link #status_t status\endlink (#STATUS_OK on success).
+ *****************************************************************************/
 status_t S2PI_WriteGpioPin(s2pi_slave_t slave, s2pi_pin_t pin, uint32_t value) {
+	/* Check if pin is valid. */
+	if (pin > S2PI_IRQ || value > 1)
+		return ERROR_INVALID_ARGUMENT;
+	/* Check if in GPIO mode. */
+	if (s2pi_.Status != STATUS_S2PI_GPIO_MODE)
+		return ERROR_S2PI_INVALID_STATE;
+	HAL_GPIO_WritePin(s2pi_.GPIOs[pin].Port, s2pi_.GPIOs[pin].Pin, value);
+	S2PI_GPIO_DELAY();
+	return STATUS_OK;
 }
 
+/*!*****************************************************************************
+ * @brief Reads the input from a specified SPI pin in GPIO mode.
+ * @details This function reads the value of an SPI pin if the SPI pins are
+ * captured for GPIO operation via the #S2PI_CaptureGpioControl previously.
+ * @param slave The specified S2PI slave.
+ * @param pin The specified S2PI pin.
+ * @param value The GPIO pin state to read (0 = low, 1 = high).
+ * @return Returns the \link #status_t status\endlink (#STATUS_OK on success).
+ *****************************************************************************/
 status_t S2PI_ReadGpioPin(s2pi_slave_t slave, s2pi_pin_t pin, uint32_t *value) {
+	/* Check if pin is valid. */
+	if (pin > S2PI_IRQ || !value)
+		return ERROR_INVALID_ARGUMENT;
+	/* Check if in GPIO mode. */
+	if (s2pi_.Status != STATUS_S2PI_GPIO_MODE)
+		return ERROR_S2PI_INVALID_STATE;
+	*value = HAL_GPIO_ReadPin(s2pi_.GPIOs[pin].Port, s2pi_.GPIOs[pin].Pin);
+	S2PI_GPIO_DELAY();
+	return STATUS_OK;
 }
