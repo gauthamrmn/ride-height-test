@@ -306,7 +306,7 @@ status_t S2PI_TransferFrame(s2pi_slave_t slave,
  *
  * @return  Returns the \link #status_t status\endlink (#STATUS_OK on success).
  *****************************************************************************/
-status_t S2PI_Abort(s2pi_slave_t slave);
+status_t S2PI_Abort();
 
 /*!***************************************************************************
  * @brief   Set a callback for the GPIO IRQ for a specified S2PI slave.

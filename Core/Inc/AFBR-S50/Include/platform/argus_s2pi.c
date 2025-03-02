@@ -179,7 +179,23 @@ status_t S2PI_TransferFrame(s2pi_slave_t spi_slave,
 	return STATUS_OK;
 }
 
-status_t S2PI_Abort(s2pi_slave_t slave) {
+/*!***************************************************************************
+ * @brief Terminates a currently ongoing asynchronous SPI transfer.
+ * @details When a callback is set for the current ongoing activity, it is
+ * invoked with the #ERROR_ABORTED error byte.
+ * @return Returns the \link #status_t status\endlink (#STATUS_OK on success).
+ *****************************************************************************/
+status_t S2PI_Abort(void) {
+	status_t status = s2pi_.Status;
+	/* Check if something is ongoing. */
+	if (status == STATUS_IDLE) {
+		return STATUS_OK;
+	}
+	/* Abort SPI transfer. */
+	if (status == STATUS_BUSY) {
+		HAL_SPI_Abort(&hspi2);
+	}
+	return STATUS_OK;
 }
 
 status_t S2PI_SetIrqCallback(s2pi_slave_t slave,
