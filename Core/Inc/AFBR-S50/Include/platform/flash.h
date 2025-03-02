@@ -58,22 +58,17 @@
  ******************************************************************************/
 
 /*! The size of a single (virtual) flash sector. */
-#define FLASH_BLOCK_SIZE 0x400
+#define FLASH_BLOCK_SIZE 2048U  // 2 KB per block (adjust per your STM32L4's flash page size)
 
 /*! The number of flash sectors. */
-#define FLASH_BLOCK_COUNT 5
+#define FLASH_BLOCK_COUNT 512U  // For 1 MB flash (1024 KB / 2 KB per block = 512 blocks)
 
 /*! The total size in bytes of all flash sectors. */
 #define FLASH_TOTAL_SIZE (FLASH_BLOCK_COUNT * FLASH_BLOCK_SIZE)
 
-/*! The flash block index dedicated for the configuration data. */
-#define FLASH_EXPL_CFG_INDEX 0
-
-/*! The flash block index dedicated for the calibration data. */
-#define FLASH_EXPL_CAL_INDEX 1
-
-/*! A flash block index dedicated to the non-volatile memory module of the AFBR-S50 API. */
-#define FLASH_API_BLOCK_INDEX 2
+#define FLASH_EXPL_CFG_INDEX       (FLASH_BLOCK_COUNT - 3)  // e.g., block 509
+#define FLASH_EXPL_CAL_INDEX       (FLASH_BLOCK_COUNT - 2)  // e.g., block 510
+#define FLASH_API_BLOCK_INDEX      (FLASH_BLOCK_COUNT - 1)  // e.g., block 511
 
 /*! The number of flash blocks dedicated to the non-volatile memory module of the AFBR-S50 API. */
 #define FLASH_API_BLOCK_COUNT 3

@@ -77,7 +77,7 @@
 #define FLASH_PAGE_1 1U
 #define FLASH_PAGE_2 2U
 /*! The size of a single flash sector. */
-
+// Defined elsewhere
 /*! Address offset for header bytes. */
 #define FLASH_ADDRESS_OFFSET 16U
 
@@ -105,7 +105,7 @@
 /*! Obtains the not current sector. */
 #define FLASH_NOT_CURRENT_PAGE() ((userConfig[0] == 0x00U) ? FLASH_PAGE_2 : FLASH_PAGE_1)
 
-/*! Macro to determine the address vector of a specified flash sector by its index. */
+/*! Macro to determine the address vector of a specified flash page by its index. */
 #define FLASH_PAGE_ADDRESS(startaddr, index, offset) \
     ((uint32_t)(((startaddr) + FLASH_ADDRESS_OFFSET) + ((index) * (FLASH_BLOCK_SIZE)) + (offset)))
 
@@ -167,7 +167,7 @@ status_t Flash_Write(uint32_t index, uint32_t offset,
 
     /* rd: 0000... wr: FFFF.... */
 
-    if (HAL_FLASH_Program(TYPEPROGRAM_WORD, wr_sector_addr, 0) != HAL_OK)
+    if (HAL_FLASH_Program(TYPEPROGRAM_DOUBLEWORD, wr_sector_addr, 0) != HAL_OK)
     {
         FLASH_LOCK();
         return ERROR_FAIL;
@@ -198,7 +198,7 @@ status_t Flash_Write(uint32_t index, uint32_t offset,
             ++rd;
         }
 
-        if (HAL_FLASH_Program(TYPEPROGRAM_WORD, wr - sizeof(uint32_t), val) != HAL_OK)
+        if (HAL_FLASH_Program(TYPEPROGRAM_DOUBLEWORD, wr - sizeof(uint64_t), val) != HAL_OK)
         {
             FLASH_LOCK();
             return ERROR_FAIL;
@@ -236,7 +236,7 @@ status_t Flash_Clear(uint32_t index, uint32_t offset, uint32_t size)
 
     /* rd: 0000... wr: FFFF.... */
 
-    if (HAL_FLASH_Program(TYPEPROGRAM_WORD, wr_sector_addr, 0) != HAL_OK)
+    if (HAL_FLASH_Program(TYPEPROGRAM_DOUBLEWORD, wr_sector_addr, 0) != HAL_OK)
     {
         FLASH_LOCK();
         return ERROR_FAIL;
@@ -257,7 +257,7 @@ status_t Flash_Clear(uint32_t index, uint32_t offset, uint32_t size)
             ++rd;
         }
 
-        if (HAL_FLASH_Program(TYPEPROGRAM_WORD, wr - sizeof(uint32_t), val) != HAL_OK)
+        if (HAL_FLASH_Program(TYPEPROGRAM_DOUBLEWORD, wr - sizeof(uint64_t), val) != HAL_OK)
         {
             FLASH_LOCK();
             return ERROR_FAIL;
