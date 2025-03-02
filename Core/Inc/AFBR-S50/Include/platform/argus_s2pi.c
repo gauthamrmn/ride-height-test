@@ -282,9 +282,26 @@ void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi) {
 }
 
 
+/*!***************************************************************************
+ * @brief Set a callback for the GPIO IRQ for a specified S2PI slave.
+ *
+ * @param slave The specified S2PI slave.
+ * @param callback A callback function to be invoked when the specified
+ * S2PI slave IRQ occurs. Pass a null pointer to disable
+ * the callback.
+ * @param callbackData A pointer to a state that will be passed to the
+ * callback. Pass a null pointer if not used.
+ *
+ * @return Returns the \link #status_t status\endlink:
+ * - #STATUS_OK: Successfully installation of the callback.
+ * - #ERROR_S2PI_INVALID_SLAVE: A wrong slave identifier is provided.
+ *****************************************************************************/
 status_t S2PI_SetIrqCallback(s2pi_slave_t slave,
                              s2pi_irq_callback_t callback,
                              void *callbackData) {
+	s2pi_.IrqCallback = callback;
+	s2pi_.IrqCallbackData = callbackData;
+	return STATUS_OK;
 }
 
 uint32_t S2PI_ReadIrqPin(s2pi_slave_t slave) {
