@@ -180,6 +180,28 @@ status_t S2PI_TransferFrame(s2pi_slave_t spi_slave,
 }
 
 /*!***************************************************************************
+ * @brief Triggers the callback function with the provided status.
+ * @details It first checks if a callback function is present,
+ * otherwise it returns immediately.
+ * The callback function is reset to 0, and must be set up again
+ * for the next transfer, if required.
+ * @param status The status to be provided to the callback funcition.
+ * @return Returns the status received from the callback function
+ ****************************************************************************/
+static inline status_t S2PI_CompleteTransfer(status_t status) {
+	s2pi_.Status = STATUS_IDLE;
+	/* Deactivate CS (set high), as we use GPIO pin */
+	HAL_GPIO_WritePin(s2pi_.GPIOs[S2PI_CS].Port, s2pi_.GPIOs[S2PI_CS].Pin, GPIO_PIN_SET);
+	/* Invoke callback if there is one */
+	if (s2pi_.Callback != 0) {
+		s2pi_callback_t callback = s2pi_.Callback;
+		s2pi_.Callback = 0;
+		status = callback(status, s2pi_.CallbackData);
+	}
+	return status;
+}
+
+/*!***************************************************************************
  * @brief Terminates a currently ongoing asynchronous SPI transfer.
  * @details When a callback is set for the current ongoing activity, it is
  * invoked with the #ERROR_ABORTED error byte.
@@ -196,6 +218,15 @@ status_t S2PI_Abort(void) {
 		HAL_SPI_Abort(&hspi2);
 	}
 	return STATUS_OK;
+}
+
+/**
+ * @brief SPI Abort Complete callback.
+ * @param hspi SPI handle.
+ * @retval None
+ */
+void HAL_SPI_AbortCpltCallback(SPI_HandleTypeDef *hspi) {
+	S2PI_CompleteTransfer(ERROR_ABORTED);
 }
 
 status_t S2PI_SetIrqCallback(s2pi_slave_t slave,
