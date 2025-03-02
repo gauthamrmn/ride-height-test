@@ -201,6 +201,48 @@ static inline status_t S2PI_CompleteTransfer(status_t status) {
 	return status;
 }
 
+/**
+ * @brief Tx Transfer completed callback.
+ * @param hspi pointer to a SPI_HandleTypeDef structure that contains
+ * the configuration information for SPI module.
+ * @retval None
+ */
+void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi) {
+	S2PI_CompleteTransfer(STATUS_OK);
+}
+
+/**
+ * @brief DMA SPI transmit receive process complete callback for delayed transfer.
+ * @param hdma pointer to a DMA_HandleTypeDef structure that contains
+ * the configuration information for the specified DMA module.
+ * @retval None
+ */
+void SPI_DMATransmitReceiveCpltDelayed(DMA_HandleTypeDef *hdma) {
+	SPI_HandleTypeDef *hspi = (SPI_HandleTypeDef *) (((DMA_HandleTypeDef *) hdma)->Parent); /*
+   Derogation MISRAC2012-Rule-11.5 */
+	HAL_SPI_TxCpltCallback(hspi);
+}
+
+/**
+ * @brief Tx Transfer completed callback.
+ * @param hspi pointer to a SPI_HandleTypeDef structure that contains
+ * the configuration information for SPI module.
+ * @retval None
+ */
+void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi) {
+	/* Note: This interrupt callback is always invoked by the RX interrupt from the HAL. However, the
+   * order of RX and TX is not specified on the device. Occasionally, the RX interrupt occurs before
+   * the TX interrupt which means the SPI transfer is not yet completely finished upon the occurrence
+   * of the RX interrupt. Thus, the start of a new SPI transfer may fail, since the AFBR-S50 API
+   * starts it right from the interrupt callback function.
+   * In order to overcome the feature, the invocation of the API callback is scheduled to whatever IRQ
+   * comes last: */
+	if (hspi->hdmatx->Lock == HAL_UNLOCKED) /* TX Interrupt already received */
+		HAL_SPI_TxCpltCallback(hspi);
+	else /* There is still the TX DMA Interrupt we have to wait for */
+		hspi->hdmatx->XferCpltCallback = SPI_DMATransmitReceiveCpltDelayed;
+}
+
 /*!***************************************************************************
  * @brief Terminates a currently ongoing asynchronous SPI transfer.
  * @details When a callback is set for the current ongoing activity, it is
