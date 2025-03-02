@@ -281,6 +281,17 @@ void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *hspi) {
 	S2PI_CompleteTransfer(ERROR_FAIL);
 }
 
+/**
+ * @brief EXTI line detection callbacks.
+ * @param GPIO_Pin Specifies the pins connected EXTI line
+ * @retval None
+ */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+	if (GPIO_Pin == s2pi_.GPIOs[S2PI_IRQ].Pin && s2pi_.IrqCallback) {
+		s2pi_.IrqCallback(s2pi_.IrqCallbackData);
+	}
+}
+
 
 /*!***************************************************************************
  * @brief Set a callback for the GPIO IRQ for a specified S2PI slave.
@@ -304,7 +315,25 @@ status_t S2PI_SetIrqCallback(s2pi_slave_t slave,
 	return STATUS_OK;
 }
 
+/*!***************************************************************************
+ * @brief Reads the current status of the IRQ pin.
+ * @details In order to keep a low priority for GPIO IRQs, the state of the
+ * IRQ pin must be read in order to reliable check for chip timeouts.
+ *
+ * The execution of the interrupt service routine for the data-ready
+ * interrupt from the corresponding GPIO pin might be delayed due to
+ * priority issues. The delayed execution might disable the timeout
+ * for the eye-safety checker too late causing false error messages.
+ * In order to overcome the issue, the state of the IRQ GPIO input
+ * pin is read before raising a timeout error in order to check if
+ * the device has already finished but the IRQ is still pending to be
+ * executed!
+ * @param slave The specified S2PI slave.
+ * @return Returns 1U if the IRQ pin is high (IRQ not pending) and 0U if the
+ * devices pulls the pin to low state (IRQ pending).
+ *****************************************************************************/
 uint32_t S2PI_ReadIrqPin(s2pi_slave_t slave) {
+	return HAL_GPIO_ReadPin(s2pi_.GPIOs[S2PI_IRQ].Port, s2pi_.GPIOs[S2PI_IRQ].Pin);
 }
 
 /*!***************************************************************************
