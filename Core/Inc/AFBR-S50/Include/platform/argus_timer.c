@@ -1,6 +1,6 @@
 #include "argus_timer.h"
 #include "tim.h"
-
+#include "assert.h"
 #include <stdint.h>
 
 /*!***************************************************************************
@@ -48,7 +48,39 @@ status_t Timer_SetCallback(timer_cb_t f) {
 status_t Timer_SetInterval(uint32_t dt_microseconds, void *param) {
 }
 
-void Timer_Start(uint32_t dt_microseconds, void *param) {
+/*! Storage for the callback parameter */
+static void *callback_param_;
+/*! Timer interval in microseconds */
+static uint32_t period_us_;
+/*!***************************************************************************
+ * @brief Starts the timer for a specified callback parameter.
+ * @details Sets the callback interval for the specified parameter and starts
+ * the timer with a new interval. If there is already an interval with
+ * the given parameter, the timer is restarted with the given interval.
+ * Passing an interval of 0 disables the timer.
+ * @param dt_microseconds The callback interval in microseconds.
+ * @param param An abstract parameter to be passed to the callback. This is
+ * also the identifier of the given interval.
+ * @return Returns the \link #status_t status\endlink (#STATUS_OK on success).
+ *****************************************************************************/
+status_t Timer_Start(uint32_t period, void *param) {
+	callback_param_ = param;
+	if (period == period_us_)
+		return STATUS_OK;
+	period_us_ = period;
+	uint32_t prescaler = SystemCoreClock / 1000000U;
+	while (period > 0xFFFF) {
+		period >>= 1U;
+		prescaler <<= 1U;
+	}
+	assert(prescaler <= 0x10000U);
+	/* Set prescaler and period values */
+	__HAL_TIM_SET_PRESCALER(&htim4, prescaler - 1);
+	__HAL_TIM_SET_AUTORELOAD(&htim4, period - 1);
+	/* Enable interrupt and timer */
+	__HAL_TIM_ENABLE_IT(&htim4, TIM_IT_UPDATE);
+	__HAL_TIM_ENABLE(&htim4);
+	return STATUS_OK;
 }
 
 void Timer_Stop(void *param) {
