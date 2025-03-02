@@ -139,7 +139,7 @@ void S2PI_ReleaseMutex(s2pi_slave_t slave) {
  * - #STATUS_S2PI_GPIO_MODE: The module is in GPIO mode. The transfer
  * was not started.
  *****************************************************************************/
-status_t S2PI_TransferFrame(SPI_HandleTypeDef *spi_slave,
+status_t S2PI_TransferFrame(s2pi_slave_t spi_slave,
                             uint8_t const *txData,
                             uint8_t *rxData,
                             size_t frameSize,
@@ -149,8 +149,8 @@ status_t S2PI_TransferFrame(SPI_HandleTypeDef *spi_slave,
 	if (!txData || frameSize == 0 || frameSize >= 0x10000)
 		return ERROR_INVALID_ARGUMENT;
 	/* Check the spi slave.*/
-	if (spi_slave != &hspi2)
-		return ERROR_S2PI_INVALID_SLAVE;
+	// if (spi_slave != S2PI_S1)
+	// 	return ERROR_S2PI_INVALID_SLAVE;
 	/* Check the driver status, lock if idle. */
 	IRQ_LOCK();
 	status_t status = s2pi_.Status;
