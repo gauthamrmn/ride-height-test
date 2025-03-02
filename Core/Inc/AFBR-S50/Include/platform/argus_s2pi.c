@@ -107,12 +107,76 @@ status_t S2PI_TryGetMutex(s2pi_slave_t slave) {
 void S2PI_ReleaseMutex(s2pi_slave_t slave) {
 }
 
-status_t S2PI_TransferFrame(s2pi_slave_t slave,
+/*!***************************************************************************
+ * @brief Transfers a single SPI frame asynchronously.
+ * @details Transfers a single SPI frame in asynchronous manner. The Tx data
+ * buffer is written to the device via the MOSI line.
+ * Optionally the data on the MISO line is written to the provided
+ * Rx data buffer. If null, the read data is dismissed.
+ * The transfer of a single frame requires to not toggle the chip
+ * select line to high in between the data frame.
+ * An optional callback is invoked when the asynchronous transfer
+ * is finished. Note that the provided buffer must not change while
+ * the transfer is ongoing. Use the slave parameter to determine
+ * the corresponding slave via the given chip select line.
+ *
+ * @param slave The specified S2PI slave.
+ * @param txData The 8-bit values to write to the SPI bus MOSI line.
+ * @param rxData The 8-bit values received from the SPI bus MISO line
+ * (pass a null pointer if the data don't need to be read).
+ * @param frameSize The number of 8-bit values to be sent/received.
+ * @param callback A callback function to be invoked when the transfer is
+ * finished. Pass a null pointer if no callback is required.
+ * @param callbackData A pointer to a state that will be passed to the
+ * callback. Pass a null pointer if not used.
+ *
+ * @return Returns the \link #status_t status\endlink:
+ * - #STATUS_OK: Successfully invoked the transfer.
+ * - #ERROR_INVALID_ARGUMENT: An invalid parameter has been passed.
+ * - #ERROR_S2PI_INVALID_SLAVE: A wrong slave identifier is provided.
+ * - #STATUS_BUSY: An SPI transfer is already in progress. The
+ * transfer was not started.
+ * - #STATUS_S2PI_GPIO_MODE: The module is in GPIO mode. The transfer
+ * was not started.
+ *****************************************************************************/
+status_t S2PI_TransferFrame(SPI_HandleTypeDef *spi_slave,
                             uint8_t const *txData,
                             uint8_t *rxData,
                             size_t frameSize,
                             s2pi_callback_t callback,
                             void *callbackData) {
+	/* Verify arguments. */
+	if (!txData || frameSize == 0 || frameSize >= 0x10000)
+		return ERROR_INVALID_ARGUMENT;
+	/* Check the spi slave.*/
+	if (spi_slave != &hspi2)
+		return ERROR_S2PI_INVALID_SLAVE;
+	/* Check the driver status, lock if idle. */
+	IRQ_LOCK();
+	status_t status = s2pi_.Status;
+	if (status != STATUS_IDLE) {
+		IRQ_UNLOCK();
+		return status;
+	}
+	s2pi_.Status = STATUS_BUSY;
+	IRQ_UNLOCK();
+	/* Set the callback information */
+	s2pi_.Callback = callback;
+	s2pi_.CallbackData = callbackData;
+	/* Manually set the chip select (active low) */
+	HAL_GPIO_WritePin(s2pi_.GPIOs[S2PI_CS].Port, s2pi_.GPIOs[S2PI_CS].Pin, GPIO_PIN_RESET);
+	HAL_StatusTypeDef hal_error;
+	/* Lock interrupts to prevent completion interrupt before setup is complete */
+	IRQ_LOCK();
+	if (rxData)
+		hal_error = HAL_SPI_TransmitReceive_DMA(&hspi2, (uint8_t *) txData, rxData, (uint16_t)
+		                                        frameSize);
+	else
+		hal_error = HAL_SPI_Transmit_DMA(&hspi2, (uint8_t *) txData, (uint16_t) frameSize);
+	IRQ_UNLOCK();
+	if (hal_error != HAL_OK)
+		return ERROR_FAIL;
+	return STATUS_OK;
 }
 
 status_t S2PI_Abort(s2pi_slave_t slave) {
