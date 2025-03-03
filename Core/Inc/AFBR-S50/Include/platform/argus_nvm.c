@@ -46,10 +46,10 @@
  ******************************************************************************/
 
 /*! A flash block index dedicated to the non-volatile memory module of the AFBR-S50 API. */
-#define FLASH_API_BLOCK_INDEX 2
+#define FLASH_API_BLOCK_INDEX 2U
 
 /*! The number of flash blocks dedicated to the non-volatile memory module of the AFBR-S50 API. */
-#define FLASH_API_BLOCK_COUNT 3
+#define FLASH_API_BLOCK_COUNT 3U
 
 /*! The size in bytes of the non-volatile memory module if the AFBR-S50 API. */
 #define FLASH_API_BLOCK_SIZE   (FLASH_API_BLOCK_COUNT * FLASH_BLOCK_SIZE)

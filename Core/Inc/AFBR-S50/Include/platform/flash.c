@@ -76,7 +76,7 @@
 
 #define FLASH_PAGE_1 1U
 #define FLASH_PAGE_2 2U
-/*! The size of a single flash sector. */
+/*! The size of a single flash page. */
 // Defined elsewhere
 /*! Address offset for header bytes. */
 #define FLASH_ADDRESS_OFFSET 16U
@@ -90,7 +90,7 @@
 /*! Erase the flash memory \p sector before writing. */
 #define FLASH_ERASE_PAGE(sector) do { \
         __HAL_FLASH_CLEAR_FLAG(FLASH_FLAG_EOP | FLASH_FLAG_OPERR | FLASH_FLAG_WRPERR | FLASH_FLAG_PGAERR | FLASH_FLAG_PGSERR ); \
-        FLASH_Erase_Sector(sector, VOLTAGE_RANGE_3); \
+        FLASH_PageErase(sector, 1); \
     } while(0)
 
 /*! Address of flash sector 1. */
@@ -99,7 +99,7 @@
 /*! Address of flash sector 2. */
 #define FLASH_PAGE_2_ADDR ((uint32_t)(userConfig) + FLASH_PAGE_SIZE)
 
-/*! Obtains the current sector. */
+/*! Obtains the current page. */
 #define FLASH_CURRENT_PAGE() ((userConfig[0] == 0x00U) ? FLASH_PAGE_1 : FLASH_PAGE_2)
 
 /*! Obtains the not current sector. */
@@ -124,7 +124,7 @@ __attribute__((__section__(".user_data"))) const volatile uint8_t userConfig[2*F
  *****************************************************************************/
 status_t Flash_Init(void)
 {
-    static_assert(FLASH_PAGE_SIZE > FLASH_SIZE + FLASH_ADDRESS_OFFSET,
+    static_assert(FLASH_PAGE_SIZE > (FLASH_TOTAL_SIZE + FLASH_ADDRESS_OFFSET),
                   "Flash sector size exceeded!");
     static_assert(((FLASH_TOTAL_SIZE + FLASH_ADDRESS_OFFSET) & 0xF) == 0,
                   "Flash sector size must be multiple of 16 bytes!");
@@ -198,7 +198,7 @@ status_t Flash_Write(uint32_t index, uint32_t offset,
             ++rd;
         }
 
-        if (HAL_FLASH_Program(TYPEPROGRAM_DOUBLEWORD, wr - sizeof(uint64_t), val) != HAL_OK)
+        if (HAL_FLASH_Program(TYPEPROGRAM_DOUBLEWORD, wr - sizeof(uint32_t), val) != HAL_OK)
         {
             FLASH_LOCK();
             return ERROR_FAIL;
