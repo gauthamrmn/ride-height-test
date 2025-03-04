@@ -3,3 +3,4 @@
 .mxproject
 .project
 /cmake-build-debug
+*.cmake
